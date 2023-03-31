@@ -68,6 +68,8 @@ To the best of our knowledge, previous analysis has not focussed on data visuali
 
 Additionally, we are the first project that uses the relatively new Alex Jones’ InfoWars dataset [released on 22 March 2023](https://www.reddit.com/r/datasets/comments/11yyoth/4682_episodes_of_the_alex_jones_show_15875_hours/) and correlates this with Trump’s tweets.
 
+Preliminary inspection of the wordclouds shows that further processing is required to make the data usable and extract the data relevant to conspiracy theories. Additionally the data will also need to be analyzed over time and correlated to each other along this axis.
+
 ## Milestone 2 (7th May, 5pm)
 
 **10% of the final grade**
