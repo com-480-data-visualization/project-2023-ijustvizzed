@@ -50,13 +50,23 @@ We aim to create an extensive set of (interactive) graphs on the topic.These inc
 
 The following graph shows the number of tweets by Trump per year. Interestingly there is a dip in the middle of his presidency. Which implies that for Trump Twitter becomes increasingly valuable before/during elections.
 
+![Trump Tweets Years](img/trump_tweets_years.png)
 
+The following wordcloud shows the most used words used in tweets by Trump:
+
+![Trump Tweets](img/trump_tweets.png)
+
+The following wordcloud shows the most used words by Alex Jones:
+
+![Infowars](img/infowars.png)
 
 ### Related work
 
 There are a number of projects that are dedicated to analyzing Trump’s tweets. These projects mainly focus on sentiment analysis and behavior over time. A number of these projects also try to correlate his tweets to external events/factors. For example: [Morales, E.A](https://journals.sagepub.com/doi/full/10.1177/19312431211028610) investigates how Trump’s tweets influence the topics of cable/network television. 
 
-Additionally, we are the first project that uses the relatively new Alex Jones’ InfoWars dataset (released on 22 March 2023) and correlates this with Trump’s tweets.
+To the best of our knowledge, previous analysis has not focussed on data visualization but instead on statistical evaluation.
+
+Additionally, we are the first project that uses the relatively new Alex Jones’ InfoWars dataset [released on 22 March 2023](https://www.reddit.com/r/datasets/comments/11yyoth/4682_episodes_of_the_alex_jones_show_15875_hours/) and correlates this with Trump’s tweets.
 
 ## Milestone 2 (7th May, 5pm)
 
