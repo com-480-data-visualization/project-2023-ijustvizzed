@@ -60,6 +60,8 @@ The following wordcloud shows the most used words by Alex Jones:
 
 ![Infowars](img/infowars.png)
 
+Preliminary inspection of the wordclouds shows that further processing is required to make the data usable and extract the data relevant to conspiracy theories. Additionally the data will also need to be analyzed over time and correlated to each other along this axis.
+
 ### Related work
 
 There are a number of projects that are dedicated to analyzing Trump’s tweets. These projects mainly focus on sentiment analysis and behavior over time. A number of these projects also try to correlate his tweets to external events/factors. For example: [Morales, E.A](https://journals.sagepub.com/doi/full/10.1177/19312431211028610) investigates how Trump’s tweets influence the topics of cable/network television. 
@@ -67,8 +69,6 @@ There are a number of projects that are dedicated to analyzing Trump’s tweets.
 To the best of our knowledge, previous analysis has not focussed on data visualization but instead on statistical evaluation.
 
 Additionally, we are the first project that uses the relatively new Alex Jones’ InfoWars dataset [released on 22 March 2023](https://www.reddit.com/r/datasets/comments/11yyoth/4682_episodes_of_the_alex_jones_show_15875_hours/) and correlates this with Trump’s tweets.
-
-Preliminary inspection of the wordclouds shows that further processing is required to make the data usable and extract the data relevant to conspiracy theories. Additionally the data will also need to be analyzed over time and correlated to each other along this axis.
 
 ## Milestone 2 (7th May, 5pm)
 
