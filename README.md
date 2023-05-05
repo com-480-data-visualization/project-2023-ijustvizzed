@@ -1,10 +1,10 @@
 # Project of Data Visualization (COM-480)
 
-| Student's name | SCIPER |
-| -------------- | ------ |
-| Philipp Mao | 354420|
-| | |
-| | |
+| Student's name     | SCIPER |
+| ------------------ | ------ |
+| Philipp Mao        | 354420 |
+| Florian Hofhammer  | 339295 |
+| Luca Di Bartolomeo |        |
 
 [Milestone 1](#milestone-1) • [Milestone 2](#milestone-2) • [Milestone 3](#milestone-3)
 
