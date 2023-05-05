@@ -1,0 +1,13 @@
+services:
+  webserver:
+    image: dataviz:latest
+    build:
+      context: .
+    ports:
+      - 127.0.0.1:8080:80
+    volumes:
+      - ./:/usr/share/nginx/html:rw
+      - node_modules:/usr/share/nginx/html/node_modules
+
+volumes:
+  node_modules:
