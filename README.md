@@ -74,6 +74,108 @@ Additionally, we are the first project that uses the relatively new Alex Jonesâ€
 
 **10% of the final grade**
 
+### Project Goal
+
+The overarching goal of our data visualization project is to showcase
+conspiracy theories spread by far-right political actors and supporters in the
+United States.
+Our dataset is based on a complete list of Donald Trump's tweets before his ban
+on Twitter and a transcription of Alex Jones' Infowars show, ranging back until
+the early 2000s.
+
+We will describe the different visualization methods and each of the
+corresponding subgoals below.
+
+### Visualization Sketches
+
+#### Introduction of Conspiracy Theories via Word Clouds
+
+For each of the two data sets, we will create a word cloud in the shape of the
+corresponding actor's head similar to the [example for the Python word\_cloud package](https://github.com/amueller/word_cloud/blob/master/examples/a_new_hope.png).
+The word clouds will show the conspiracy theories the two subjects are
+referring to in our dataset.
+Clicking on a term in the word cloud will bring up an overlay that briefly
+explains the term and provides links to further resources about the
+corresponding terms.
+These links will be vetted to only provide reliable sources such as scientific
+publications or neutral, educational content.
+The links will _not_ link to blogs or other publications by actors supporting
+the conspiracy theories as we want to provide educational visualizations
+without supporting the conspiracy theories' further spreading.
+
+This visualization aims to provide an entry point to the web page's visitors
+not familiar with the matter at hand.
+
+#### Network of Terms Related to Conspiracy Theories
+
+We will create a network graph where each node corresponds to a term related
+to the conspiracy theories brought up in our dataset.
+The links between nodes are determined based on contextual use of terms.
+We will cluster the graph by strongest links which implies clustering by
+conspiracy theories.
+
+The network graph will be divided into two halves, one of them for conspiracy
+theories spread by Donald Trump, the other one for topics brought up by Alex
+Jones.
+While we will clearly distinguish between the two halves, we will also showcase
+links between the two halves wherever Donald Trump and Alex Jones bring up the
+same conspiracy theories.
+
+The graph will feature a slider below that allows to adjust the time frame
+showcased in the current graph.
+Due to the abundance of data and in order to highlight development over time,
+an instance of the graph will only be based on the data for six months.
+The slider allows the viewer to change the time frame for which the graph is
+shown.
+
+#### Sankey Diagram of Conspiracy Theory Evoluation
+
+A Sankey diagram will allow us to show how the usage of conspiracy theories in
+our dataset evolves over time.
+The page visitor will be able to choose a start date and an end date based on
+sliders on a timeline.
+The Sankey diagram will then show how attention shifted from one set of
+conspiracy theories prevalent in our dataset at the beginning of the chosen
+time frame to another set of conspiracy theories at the end of the chosen time
+frame.
+
+Where the links in the [network graph](#network-of-terms-related-to-conspiracy-theories)
+do not allow the viewer to see at first glance how the focus on certain
+theories shifted from one to another, this type of diagram provides us with a
+means to do so.
+
+### Tools Used
+
+Since our dataset is heavily text-based, we need to do extensive pre-processing
+to extract information for our visualization.
+For this purpose, we leverage a Python-based text processing pipeline in which
+we tokenize the text dataset and normalize our tokens before creating word
+vectors on which we conduct further analysis (such as contextualized
+clustering).
+Popular libraries used for those purposes are `gensim` and `sklearn`, and our
+pipeline also builds around them.
+
+Our visualization will be based on d3.js.
+Depending on how our implementation evolves, we will pull in further utility
+libraries.
+As of now, we however do not already envision other dependencies being pulled
+into our project.
+
+For hosting, we will leverage GitHub pages, associated with the GitHub
+repository for our project.
+
+### Important Past And Future Lectures
+
+While of course all the basic lectures on d3.js, perception, and design of data
+visualization are important as a basis for our project, certain lectures stand
+out.
+
+First, the lectures on data and maps (slide decks 4.1, 8.1) introduced
+node-link diagrams/network graphs and Sankey diagrams as we envision to use
+them in our project.
+Second, the lecture on text visualization (slide deck 9) provides us with
+information about text processing and visualization that will come in useful
+during the further implementation of our project.
 
 ## Milestone 3 (4th June, 5pm)
 
