@@ -177,6 +177,10 @@ Second, the lecture on text visualization (slide deck 9) provides us with
 information about text processing and visualization that will come in useful
 during the further implementation of our project.
 
+For the purposes described above, the upcoming lecture on graph visualization
+will also come in useful and provide us with more insights on how to nicely
+visualize graphs (here: graphs of words/topics).
+
 ## Milestone 3 (4th June, 5pm)
 
 **80% of the final grade**
