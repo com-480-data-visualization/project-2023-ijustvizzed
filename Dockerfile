@@ -1,5 +1,3 @@
-# syntax=docker.io/docker/dockerfile:latest
-
 FROM docker.io/nginx:latest
 
 # Enable APT package caching
