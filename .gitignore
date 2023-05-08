@@ -367,4 +367,4 @@ tags
 # End of https://www.toptal.com/developers/gitignore/api/linux,vim,python,node,visualstudiocode
 infowars-main
 bullshit_ml/venv
-bullshit_ml/word2vec_model
+bullshit_ml/word2vec.model

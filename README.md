@@ -78,7 +78,9 @@ Additionally, we are the first project that uses the relatively new Alex Jonesâ€
 
 The overarching goal of our data visualization project is to showcase
 conspiracy theories spread by far-right political actors and supporters in the
-United States.
+United States. We will put particular focus in the *correlations* between those
+conspiracy theories, showcasing how someone inclined to believe in one likely believes
+in multiple other ones.
 Our dataset is based on a complete list of Donald Trump's tweets before his ban
 on Twitter and a transcription of Alex Jones' Infowars show, ranging back until
 the early 2000s.
@@ -97,6 +99,14 @@ referring to in our dataset.
 Clicking on a term in the word cloud will bring up an overlay that briefly
 explains the term and provides links to further resources about the
 corresponding terms.
+
+Furthermore, we will show the correlations between conspiracy theories using
+a *chord diagram* built from the covariance matrix of words gathered from 
+a word2vec representation of Jones' transcriptions. The chord diagram 
+will showcase which conspiracy theories influence each other. The diagram
+is 
+
+
 These links will be vetted to only provide reliable sources such as scientific
 publications or neutral, educational content.
 The links will _not_ link to blogs or other publications by actors supporting
@@ -106,9 +116,11 @@ without supporting the conspiracy theories' further spreading.
 This visualization aims to provide an entry point to the web page's visitors
 not familiar with the matter at hand.
 
-#### Network of Terms Related to Conspiracy Theories
 
-We will create a network graph where each node corresponds to a term related
+
+#### Correlations between Conspiracy Theories via Chord Diagram
+
+We will create a chord diagram where each node corresponds to a term related
 to the conspiracy theories brought up in our dataset.
 The links between nodes are determined based on contextual use of terms.
 We will cluster the graph by strongest links which implies clustering by
@@ -139,7 +151,7 @@ conspiracy theories prevalent in our dataset at the beginning of the chosen
 time frame to another set of conspiracy theories at the end of the chosen time
 frame.
 
-Where the links in the [network graph](#network-of-terms-related-to-conspiracy-theories)
+Where the links in the [network graph](#correlations-between-conspiracy-theories-via-chord-diagram)
 do not allow the viewer to see at first glance how the focus on certain
 theories shifted from one to another, this type of diagram provides us with a
 means to do so.
