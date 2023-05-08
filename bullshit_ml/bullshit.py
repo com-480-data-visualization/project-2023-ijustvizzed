@@ -1,6 +1,7 @@
 import glob
 import json
 import re
+import os
 import numpy as np
 from gensim.models import Word2Vec
 from sklearn.cluster import KMeans
@@ -15,7 +16,9 @@ illuminati
 new world order
 soros
 jews
-frogs
+obama
+ufo
+moon landing
 """.strip().split("\n")))
 
 # antichrist
@@ -32,69 +35,73 @@ frogs
 # stalin
 # hitler
 
-# Define the number of clusters for KMeans
-NUM_CLUSTERS = 100
+def build_w2v_model():
+    # Define the number of clusters for KMeans
+    NUM_CLUSTERS = 100
+
+    # Define the directory containing the documents
+    # DOCS_DIR = "./documents"
+    DOCS_DIR = "../infowars-main/"
+
+    # Download the list of stopwords from NLTK
+    nltk.download("stopwords")
+    # Get the list of stopwords
+    stop_words = set(stopwords.words("english"))
 
 
+    # Load the documents
+    docs = []
+    for filename in glob.glob(DOCS_DIR + "/*.txt")[:5]:
+        with open(filename, "r") as f:
+            text = f.read()
+            res = re.sub(r'[^\w\s]', '', text)
+            res = res.replace('\n', ' ')
+            res = res.lower()
 
-# Define the directory containing the documents
-# DOCS_DIR = "./documents"
-DOCS_DIR = "../infowars-main/"
+            filtered_sentences = []
+            words = res.split()
+            filtered_words = [word for word in words if word.lower() not in stop_words]
+            filtered_sentence = " ".join(filtered_words)
 
-# Download the list of stopwords from NLTK
-nltk.download("stopwords")
-# Get the list of stopwords
-stop_words = set(stopwords.words("english"))
-
-
-# Load the documents
-docs = []
-for filename in glob.glob(DOCS_DIR + "/*.txt")[:5000]:
-    with open(filename, "r") as f:
-        text = f.read()
-        res = re.sub(r'[^\w\s]', '', text)
-        res = res.replace('\n', ' ')
-        res = res.lower()
-
-        filtered_sentences = []
-        words = res.split()
-        filtered_words = [word for word in words if word.lower() not in stop_words]
-        filtered_sentence = " ".join(filtered_words)
-
-        docs.append(filtered_sentence)
+            docs.append(filtered_sentence)
 
 
-# Tokenize the documents into sentences
-sentences = [doc.split(" ") for doc in docs]
+    # Tokenize the documents into sentences
+    sentences = [doc.split(" ") for doc in docs]
 
-print(list(map(lambda x: len(x), sentences)))
+    print(list(map(lambda x: len(x), sentences)))
 
-# init callback class
-class callback(CallbackAny2Vec):
-    """
-    Callback to print loss after each epoch
-    """
-    def __init__(self):
-        self.epoch = 0
+    # init callback class
+    class callback(CallbackAny2Vec):
+        """
+        Callback to print loss after each epoch
+        """
+        def __init__(self):
+            self.epoch = 0
 
-    def on_epoch_end(self, model):
-        loss = model.get_latest_training_loss()
-        if self.epoch == 0:
-            print('Loss after epoch {}: {}'.format(self.epoch, loss))
-        else:
-            print('Loss after epoch {}: {}'.format(self.epoch, loss- self.loss_previous_step))
-        self.epoch += 1
-        self.loss_previous_step = loss
+        def on_epoch_end(self, model):
+            loss = model.get_latest_training_loss()
+            if self.epoch == 0:
+                print('Loss after epoch {}: {}'.format(self.epoch, loss))
+            else:
+                print('Loss after epoch {}: {}'.format(self.epoch, loss- self.loss_previous_step))
+            self.epoch += 1
+            self.loss_previous_step = loss
 
-loss_logger = callback()
+    loss_logger = callback()
+
+    model = Word2Vec(sentences, vector_size=100, min_count=5, compute_loss=True, epochs=10, callbacks=[loss_logger])
+    model.build_vocab(sentences)
+    # Train the Word2Vec model
+    model.train(sentences, total_examples=model.corpus_count, epochs=model.epochs)
+    model.save("word2vec.model")
 
 
 # Build the vocabulary of the Word2Vec model
-model = Word2Vec(sentences, vector_size=100, min_count=5, compute_loss=True, epochs=10, callbacks=[loss_logger])
-model.build_vocab(sentences)
+if not os.path.exists("word2vec.model"):
+    build_w2v_model()
 
-# Train the Word2Vec model
-model.train(sentences, total_examples=model.corpus_count, epochs=model.epochs)
+model = Word2Vec.load("word2vec.model")
 
 matrix = []
 for word in THEORIES:
@@ -105,6 +112,11 @@ for word in THEORIES:
         else:
             row += [0]
     matrix += [row]
+
+# make the flow one direction only (before it was simmetric
+for x in range(len(THEORIES)):
+    for y in range(x, len(THEORIES)):
+        matrix[x][y] = 0
 
 dataset = {"labels": THEORIES, "matrix": matrix}
 print(matrix)
