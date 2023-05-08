@@ -17,7 +17,7 @@
 				Why Conspiracy Theories Persist
 			</h1>
 			<img src="assets/img/alex-jones-sexy.webp" class="img-fluid"/>
-			<div class="p-3">
+			<div class="py-5">
 				In today's world, conspiracy theories seem to be more prevalent than ever. From flat earth to QAnon, these theories can be found everywhere from social media to political rallies. Despite the seemingly outlandish nature of these theories, they continue to gain traction among many people. As researchers, we were surprised to find that conspiracy theories are still so popular today. <br/>
 				To investigate this phenomenon, we conducted a study using the transcripts of Alex Jones' Infowars podcast. Our findings shed light on the correlation between belief in conspiracy theories and a number of psychological factors, and offer insight into why these theories persist in modern society.
 			</div>
@@ -25,6 +25,18 @@
 		<div class="col-1"></div>
 	</div>
 	<div id="ohwow"></div>
+	<div class="row">
+		<div class="col-1"></div>
+		<div class="col-10">
+			<div class="py-5">
+				In our recent study analyzing the prevalence of conspiracy theories in popular media, we created a bar plot to showcase the frequency of conspiracy theories discussed on Alex Jones' podcasts. As a controversial figure in the media landscape, Jones has gained notoriety for promoting a variety of conspiracy theories on his show, including those related to politics, technology, and health.
+				The bar plot that we created displays the number of times each conspiracy theory was mentioned on Jones' show over a period of several months, with the most frequently discussed theories represented by the tallest bars on the plot. Through our analysis, we found that some of the most commonly discussed conspiracy theories on Jones' show include those related to government surveillance, secret societies, and the so-called "deep state."
+				Our plot offers a revealing look at the types of topics that are of most interest to Jones and his listeners, and sheds light on the ways in which conspiracy theories can spread and gain traction in the media. By better understanding the prevalence of conspiracy theories in popular media, we hope to encourage critical thinking and skepticism in our society.
+			</div>
+		</div>
+		<div class="col-1"></div>
+	</div>
+
 	<div id="barplot"></div>
 
 </div>
@@ -83,7 +95,7 @@ formatValue = x => `${x.toFixed(0) / 10}%`
     .data(chords)
     .join("path")
       .attr("d", ribbon)
-      .attr("fill", d => color(data["labels"][d.target.index]))
+      .attr("fill", d => color(data["labels"][d.source.index]))
       .style("mix-blend-mode", "multiply")
     .append("title")
       .text(d => `${data["labels"][d.source.index]} believes also in ${data["labels"][d.target.index]} ${formatValue(d.source.value)}`);
@@ -123,7 +135,7 @@ is believed ${formatValue(d3.sum(matrix, row => row[d.index]))}`));
 
 // set the dimensions and margins of the graph
 var margin = {top: 20, right: 30, bottom: 40, left: 90},
-    width = 840 - margin.left - margin.right,
+    width = 1300 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
