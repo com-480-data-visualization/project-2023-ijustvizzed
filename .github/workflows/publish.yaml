@@ -1,0 +1,22 @@
+name: Publish to GitHub Pages
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Push subdirectory to gh-pages branch
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: website
+          git-config-name: GitHub Actions
+          git-config-email: actions@github.com
+
