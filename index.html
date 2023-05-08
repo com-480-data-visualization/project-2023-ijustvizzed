@@ -16,7 +16,7 @@
 				The Power of <u><i>Paranoia</i></u>: <br/>
 				Why Conspiracy Theories Persist
 			</h1>
-			<img src="../img/alex-jones-sexy.webp" class="img-fluid"/>
+			<img src="assets/img/alex-jones-sexy.webp" class="img-fluid"/>
 			<div class="p-3">
 				In today's world, conspiracy theories seem to be more prevalent than ever. From flat earth to QAnon, these theories can be found everywhere from social media to political rallies. Despite the seemingly outlandish nature of these theories, they continue to gain traction among many people. As researchers, we were surprised to find that conspiracy theories are still so popular today. <br/>
 				To investigate this phenomenon, we conducted a study using the transcripts of Alex Jones' Infowars podcast. Our findings shed light on the correlation between belief in conspiracy theories and a number of psychological factors, and offer insight into why these theories persist in modern society.
@@ -31,7 +31,7 @@
 
 <script>
 (async function () {
-data = await d3.json("dataset.json");
+data = await d3.json("assets/data/dataset.json");
 console.log(data["matrix"]);
 
 
@@ -136,7 +136,7 @@ var margin = {top: 20, right: 30, bottom: 40, left: 90},
           "translate(" + margin.left + "," + margin.top + ")");
 
 // Parse the Data
-	data = await d3.csv("barplot.csv");
+	data = await d3.csv("assets/data/barplot.csv");
 
 	// Add X axis
 	var x = d3.scaleLinear()
