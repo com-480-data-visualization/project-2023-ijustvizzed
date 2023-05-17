@@ -2,6 +2,8 @@ var descbox = document.getElementById("descbox")
 
 var elements = document.querySelectorAll('.consp');
 
+console.log(elements);
+
 var consp_desc = {
     "1" : "AFAFAFAFAFAFAF",
     "2" : "TEEESTESTSTEETS"
