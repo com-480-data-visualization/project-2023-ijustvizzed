@@ -120,7 +120,7 @@ for x in range(len(THEORIES)):
 
 dataset = {"labels": THEORIES, "matrix": matrix}
 print(matrix)
-with open("../website/dataset.json", "w") as f:
+with open("../website/assets/data/dataset.json", "w") as f:
     json.dump(dataset, f)
 
 exit(1)
