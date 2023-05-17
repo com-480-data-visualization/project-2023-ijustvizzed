@@ -9,6 +9,10 @@ var colormap = {
     "trump" : "#ffa500"
 }
 
+/*
+Need to adjust the proportions of this
+*/
+
 // set the dimensions and margins of the graph
 var margin = {top: 10, right: 10, bottom: 10, left: 10},
     width = 1200 - margin.left - margin.right,
@@ -40,7 +44,7 @@ var layout = d3.layout.cloud()
   .size([width, height])
   .words(myWords.map(function(d) { return {text: d.word, size:d.size, color:d.color, id:d.id}; }))
   .padding(3)        //space between words
-  .rotate(function() { return ~~(Math.random() * 2) * 90; })
+  .rotate(function() { return 0; })
   .fontSize(d => scale(d.size))      // font size of words
   .on("end", draw);
 layout.start();
@@ -59,11 +63,13 @@ function draw(words) {
         .style("font-size", (d) => d.size + "px")
         .style("fill", (d) => mapcolor(d.color))
         .attr("text-anchor", "middle")
-        .style("font-family", "Impact")
+        .style("font-family", "Helvetica Neue")
         .attr("transform", function(d) {
           return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
         })
         .text(function(d) { return d.text; });    
+
+        import("./descbox.js");
 }
 
 /*
