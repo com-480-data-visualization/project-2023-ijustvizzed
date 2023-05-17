@@ -9,8 +9,8 @@ var colormap = {
     "trump" : "#ffa500"
 }
 
-data_lineplot = await d3.csv("assets/data/timeline.csv")
-data = await d3.json("assets/data/dataset.json");
+var data_lineplot = await d3.csv("assets/data/timeline.csv")
+var data = await d3.json("assets/data/dataset.json");
 
 console.log("data_lineplot", data_lineplot);
 console.log(data);
