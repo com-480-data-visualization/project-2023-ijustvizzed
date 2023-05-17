@@ -49,6 +49,18 @@ delete column2sums.date;
 Need to adjust the proportions of this
 */
 
+myWords = []
+var i = 0;
+for (var key in column2sums) {
+      var obj = {};
+      obj["word"] = key;
+      obj["size"] = column2sums[key];
+      obj["id"] = i;
+      i = i+1;
+      myWords.push(obj);
+  }
+  
+
 // set the dimensions and margins of the graph
 var margin = {top: 10, right: 10, bottom: 10, left: 10},
     width = 1200 - margin.left - margin.right,
