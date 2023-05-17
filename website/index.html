@@ -69,8 +69,6 @@
 
 </div>
 
-<script src="assets/js/wordcloud.js"></script>
-<script src="assets/js/descbox.js"></script>
 
 <script>
 
@@ -108,6 +106,8 @@ ribbon = d3.ribbonArrow()
 
 console.log(chords.groups);
 
+console.log(data)
+
 const textId_id = "mytext";
 const textId_href = "#mytext";
 
@@ -137,6 +137,8 @@ var hover_chord = function(event, d) {
 		.style("fill", color(data["labels"][d.index]))
 		.style("fill-opacity", "0.9")
 		.style("opacity", "0.9")
+
+	// show it
 };
 
 
@@ -186,6 +188,8 @@ svg.append("g")
 		.attr("fill", (data, i) => { return d3.schemeSet3[i]; })
 		.attr("opacity", "0")
 		.attr("d", arc)
+		.attr("class", "consp")
+		.attr("conspid", (data, i) => i)
 		.on("mouseover", hover_chord) 
 
 
@@ -272,7 +276,7 @@ console.log(data_lineplot);
 timedata = data_lineplot.map(function(d) { 
 	dict = {}
 	dict["date"] = d3.timeParse("%Y-%m")(d.date);
-	data["labels"].forEach(x => {dict[x] = d.x});
+	data["labels"].forEach(x => {dict[x.join(" ")] = d[x.join(" ")]});
 	return dict;
 })
 
@@ -307,7 +311,9 @@ data["labels"].forEach(label => {
 			)
 })
 
-console.log(data["labels"]);
+
+import("./assets/js/wordcloud.js");
+import("./assets/js/descbox.js");
 
 })();
 </script>

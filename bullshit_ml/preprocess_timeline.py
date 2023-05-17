@@ -27,6 +27,7 @@ with open("../website/assets/data/timeline.csv", "w") as f:
         f.write(" ".join(x))
         if e != len(THEORIES)-1:
             f.write(",")
+    f.write("\n")
     for date in data.keys():
         f.write(date+",")
         for e,x in enumerate(THEORIES):
