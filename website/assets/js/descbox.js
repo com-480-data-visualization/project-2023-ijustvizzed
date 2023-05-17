@@ -2,8 +2,6 @@ var descbox = document.getElementById("descbox")
 
 var elements = document.querySelectorAll('.consp');
 
-console.log(elements);
-
 var consp_desc = {
     "1" : "AFAFAFAFAFAFAF",
     "2" : "TEEESTESTSTEETS"
@@ -16,12 +14,15 @@ elements.forEach(function(element) {
   element.addEventListener('mouseout', handleMouseOut);
   element.addEventListener('click', handleClick);
 });
+
+
+
 function handleMouseOver(event) {
     var consp_id = event.target.attributes.conspid.value;
-    console.log(event.target.attributes);
-    console.log(consp_id);
-    console.log(consp_desc[consp_id]);
     descbox.innerText = consp_desc[consp_id];
+
+		window.hover_chord(consp_id);
+		window.hover_lineplot(consp_id);
 }
 function handleMouseOut(event) {
     if(!fixed){

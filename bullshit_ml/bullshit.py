@@ -19,6 +19,7 @@ jews
 obama
 ufo
 moon landing
+coronavirus
 """.strip().split("\n")))
 
 # antichrist
