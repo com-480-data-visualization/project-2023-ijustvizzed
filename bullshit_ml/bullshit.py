@@ -123,28 +123,24 @@ print(matrix)
 with open("../website/assets/data/dataset.json", "w") as f:
     json.dump(dataset, f)
 
-exit(1)
-
-
 
 # Cluster the keywords
-keywords = list(model.wv.key_to_index.keys())
-vecs = model.wv[keywords]
-kmeans = KMeans(n_clusters=NUM_CLUSTERS)
-kmeans.fit(vecs)
-centroids = kmeans.cluster_centers_
-pca = PCA(n_components=2)
-pca.fit(centroids)
-reduced_centroids = pca.transform(centroids)
+# keywords = list(model.wv.key_to_index.keys())
+# vecs = model.wv[keywords]
+# kmeans = KMeans(n_clusters=NUM_CLUSTERS)
+# kmeans.fit(vecs)
+# centroids = kmeans.cluster_centers_
+# pca = PCA(n_components=2)
+# pca.fit(centroids)
+# reduced_centroids = pca.transform(centroids)
 
-# Print the clusters
-with open("clusters.csv", "w") as f:
-    for i in range(NUM_CLUSTERS):
-        print("Cluster ", i+1, ":")
-        cluster_words = [keywords[j] for j in range(len(keywords)) if kmeans.labels_[j] == i]
-        print(cluster_words)
-        print("\n")
-        f.write(",".join(reduced_centroids[i] + ","))
-        f.write(",".join(cluster_words))
-        f.write("\n")
-
+# # Print the clusters
+# with open("clusters.csv", "w") as f:
+    # for i in range(NUM_CLUSTERS):
+        # print("Cluster ", i+1, ":")
+        # cluster_words = [keywords[j] for j in range(len(keywords)) if kmeans.labels_[j] == i]
+        # print(cluster_words)
+        # print("\n")
+        # f.write(",".join(reduced_centroids[i] + ","))
+        # f.write(",".join(cluster_words))
+        # f.write("\n")
