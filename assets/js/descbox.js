@@ -2,6 +2,11 @@ var descbox = document.getElementById("descbox")
 
 var elements = document.querySelectorAll('.consp');
 
+console.log(elements);
+
+/*
+TODO: Update this and use the actual dataset
+*/
 var consp_desc = {
     "1" : "AFAFAFAFAFAFAF",
     "2" : "TEEESTESTSTEETS"
@@ -19,10 +24,15 @@ elements.forEach(function(element) {
 
 function handleMouseOver(event) {
     var consp_id = event.target.attributes.conspid.value;
-    descbox.innerText = consp_desc[consp_id];
-
 		window.hover_chord(consp_id);
 		window.hover_lineplot(consp_id);
+    if(!fixed){
+        var consp_id = event.target.attributes.conspid.value;
+        console.log(event.target.attributes);
+        console.log(consp_id);
+        console.log(consp_desc[consp_id]);
+        descbox.innerText = consp_desc[consp_id];
+    }
 }
 function handleMouseOut(event) {
     if(!fixed){
@@ -37,4 +47,6 @@ function handleClick(event) {
     console.log(consp_desc[consp_id]);
     descbox.innerText = consp_desc[consp_id];
 }
+
+
 

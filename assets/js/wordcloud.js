@@ -1,13 +1,53 @@
 // List of words
 var myWords = [
-    {word: "Running", size: 50, color: "trump", url: "http://example.com", id: "1"},
-    {word: "PAIN", size: 200, color: "alex", url: "http://example.com", id: "2"}
+    {word: "Running", size: 50, color: "trump", id: "1"},
+    {word: "PAIN", size: 200, color: "alex", id: "2"}
 ]
 
 var colormap = {
     "alex" : "#0000ff",
     "trump" : "#ffa500"
 }
+
+data_lineplot = await d3.csv("assets/data/timeline.csv")
+data = await d3.json("assets/data/dataset.json");
+
+console.log("data_lineplot", data_lineplot);
+console.log(data);
+
+function sumColumn(csvData, columnName) {
+    var values = csvData.map(function(d) {
+      return +d[columnName];
+    });
+  
+    var sum = d3.sum(values);
+    return sum;
+  }
+
+function getColumnSums(csvData) {
+  var columnSums = {};
+
+  // Get the column names from the first row of the CSV data
+  var columnNames = Object.keys(csvData[0]);
+
+  // Calculate the sum for each column
+  columnNames.forEach(function(columnName) {
+        var values = csvData.map(function(d) {
+            return +d[columnName];
+          });
+    var sum = d3.sum(values);
+    columnSums[columnName] = sum;
+  });
+
+  return columnSums;
+}
+
+var column2sums  = getColumnSums(data_lineplot);
+console.log("console2sums", column2sums);
+delete column2sums.date;
+/*
+Need to adjust the proportions of this
+*/
 
 // set the dimensions and margins of the graph
 var margin = {top: 10, right: 10, bottom: 10, left: 10},
@@ -40,7 +80,7 @@ var layout = d3.layout.cloud()
   .size([width, height])
   .words(myWords.map(function(d) { return {text: d.word, size:d.size, color:d.color, id:d.id}; }))
   .padding(3)        //space between words
-  .rotate(function() { return ~~(Math.random() * 2) * 90; })
+  .rotate(function() { return 0; })
   .fontSize(d => scale(d.size))      // font size of words
   .on("end", draw);
 layout.start();
@@ -59,11 +99,13 @@ function draw(words) {
         .style("font-size", (d) => d.size + "px")
         .style("fill", (d) => mapcolor(d.color))
         .attr("text-anchor", "middle")
-        .style("font-family", "Impact")
+        .style("font-family", "Helvetica Neue")
         .attr("transform", function(d) {
           return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
         })
         .text(function(d) { return d.text; });    
+
+        import("./descbox.js");
 }
 
 /*
@@ -80,3 +122,4 @@ function handleMouseOver(event) {
 function handleMouseOut(event) {
   event.target.style.backgroundColor = 'black';
 }
+
