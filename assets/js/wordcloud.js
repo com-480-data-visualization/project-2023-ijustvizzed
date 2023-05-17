@@ -71,7 +71,7 @@ const min = d3.min(myWords, d => d.size)
 console.log(max);
 console.log(min);
 const scale = d3.scaleLinear()
-            .domain([0, max])
+            .domain([min*10, max])
             .range([0, 70]);
 
 function mapcolor(color) {
