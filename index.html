@@ -269,10 +269,15 @@ data_lineplot = await d3.csv("assets/data/timeline.csv")
 
 console.log(data_lineplot);
 
-timedata = data_lineplot.map(function(d) { return {date: d3.timeParse("%Y-%m-%d")(d.date), value: d.value }})
-
+timedata = data_lineplot.map(function(d) { 
+	dict = {}
+	dict["date"] = d3.timeParse("%Y-%m")(d.date);
+	data["labels"].forEach(x => {dict[x] = d.x});
+	return dict;
+})
 
 console.log(timedata);
+
 
 // Add X axis --> it is a date format
 x = d3.scaleTime()
@@ -290,16 +295,19 @@ svg.append("g")
 	.call(d3.axisLeft(y));
 
 // Add the line
-svg.append("path")
-	.datum(timedata)
-	.attr("fill", "none")
-	.attr("stroke", "steelblue")
-	.attr("stroke-width", 1.5)
-	.attr("d", d3.line()
-		.x(function(d) { return x(d.date) })
-		.y(function(d) { return y(d.value) })
-		)
+data["labels"].forEach(label => {
+	svg.append("path")
+		.datum(timedata)
+		.attr("fill", "none")
+		.attr("stroke", "steelblue")
+		.attr("stroke-width", 1.5)
+		.attr("d", d3.line()
+			.x(function(d) { return x(d.date) })
+			.y(function(d) { return y(d.label) })
+			)
+})
 
+console.log(data["labels"]);
 
 })();
 </script>
