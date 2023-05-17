@@ -1,7 +1,7 @@
 // List of words
 var myWords = [
-    {word: "Running", size: 50, color: "trump", url: "http://example.com", id: "1"},
-    {word: "PAIN", size: 200, color: "alex", url: "http://example.com", id: "2"}
+    {word: "Running", size: 50, color: "trump", id: "1"},
+    {word: "PAIN", size: 200, color: "alex", id: "2"}
 ]
 
 var colormap = {
@@ -9,6 +9,42 @@ var colormap = {
     "trump" : "#ffa500"
 }
 
+data_lineplot = await d3.csv("assets/data/timeline.csv")
+data = await d3.json("assets/data/dataset.json");
+
+console.log("data_lineplot", data_lineplot);
+console.log(data);
+
+function sumColumn(csvData, columnName) {
+    var values = csvData.map(function(d) {
+      return +d[columnName];
+    });
+  
+    var sum = d3.sum(values);
+    return sum;
+  }
+
+function getColumnSums(csvData) {
+  var columnSums = {};
+
+  // Get the column names from the first row of the CSV data
+  var columnNames = Object.keys(csvData[0]);
+
+  // Calculate the sum for each column
+  columnNames.forEach(function(columnName) {
+        var values = csvData.map(function(d) {
+            return +d[columnName];
+          });
+    var sum = d3.sum(values);
+    columnSums[columnName] = sum;
+  });
+
+  return columnSums;
+}
+
+var column2sums  = getColumnSums(data_lineplot);
+console.log("console2sums", column2sums);
+delete column2sums.date;
 /*
 Need to adjust the proportions of this
 */
@@ -86,3 +122,4 @@ function handleMouseOver(event) {
 function handleMouseOut(event) {
   event.target.style.backgroundColor = 'black';
 }
+
