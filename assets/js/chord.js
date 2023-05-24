@@ -49,6 +49,14 @@ window.hover_chord = function(index) {
 		.style("opacity", "0.9")
 };
 
+window.unhighlight_chord = function(index) {
+	svg = d3.select("#chord_diagram")
+	d3.select("#chords").selectAll("path")
+		.transition()
+		.style("fill", "black")
+		.style("fill-opacity", "0.25")
+		.style("opacity", "0.25")
+};
 
 svg.append("g")
 		.attr("id", "chords")
@@ -100,4 +108,11 @@ svg.append("g")
 		.attr("conspid", (data, i) => i)
 
 document.getElementById("ohwow").appendChild(svg.node());
+import("./descbox.js").then((module) => {
+	// Call the async function after import is resolved
+	module.initdescbox();
+	})
+	.catch((error) => {
+	console.error('Error occurred while importing module:', error);
+	});
 }

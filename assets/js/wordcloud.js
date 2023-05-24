@@ -101,7 +101,7 @@ export async function d3drawwordcloud(type){
           .attr("class", "consp wcloud")
           .attr("conspid", (d) => d.id)
           .style("font-size", (d) => d.size + "px")
-          .style("fill", (d) => color(d.text))
+          .style("fill", (d) => color(d.text.split(" ")))
           .attr("text-anchor", "middle")
           .style("font-family", "Helvetica Neue")
           .attr("transform", function(d) {
@@ -109,7 +109,13 @@ export async function d3drawwordcloud(type){
           })
           .text(function(d) { return d.text; });    
 
-          import("./descbox.js");
+          import("./descbox.js").then((module) => {
+            // Call the async function after import is resolved
+            module.initdescbox();
+            })
+            .catch((error) => {
+            console.error('Error occurred while importing module:', error);
+            });
   }
 
   /*

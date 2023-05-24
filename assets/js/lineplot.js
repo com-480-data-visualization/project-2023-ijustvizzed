@@ -1,15 +1,30 @@
 export async function d3drawlineplot(type){
 	console.log("d3 draw lineplot type: ", type);
 // set the dimensions and margins of the graph
+
+var container = document.getElementById('scalethis');
+			
+var containerWidth = container.getBoundingClientRect().width;
+			
+var svgWidth = 1300;
+var svgHeight = 400;
+			
+var scale = containerWidth / svgWidth;
+					
+console.log("scaling", containerWidth, svgWidth, scale);
+svgWidth =  svgWidth * scale;
+svgHeight = svgHeight * scale
+
 var margin = {top: 20, right: 30, bottom: 40, left: 90},
-		width = 1300 - margin.left - margin.right,
-		height = 400 - margin.top - margin.bottom;
+width = svgWidth - margin.left - margin.right,
+height = svgHeight - margin.top - margin.bottom;
 
 // remove all previous data
 d3.select("#lineplot").html(null);
 // append the svg object to the body of the page
 var svg = d3.select("#lineplot")
 	.append("svg")
+		.attr("id", "lineplotsvg")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
 	.append("g")
@@ -62,7 +77,13 @@ svg.append("g")
 	.call(d3.axisBottom(x));
 svg.append("g")
 	.call(d3.axisLeft(y));
-
+import("./descbox.js").then((module) => {
+	// Call the async function after import is resolved
+	module.initdescbox();
+	})
+	.catch((error) => {
+	console.error('Error occurred while importing module:', error);
+	});
 
 window.hover_lineplot = function(index) {
 	svg = d3.select("#chord_diagram")
@@ -73,4 +94,12 @@ window.hover_lineplot = function(index) {
 		.transition()
 		.style("opacity", "1")
 }
+
+window.unhighlight_lineplot = function(index) {
+	svg = d3.select("#chord_diagram")
+	d3.select("#lineplot").selectAll("path")
+		.transition()
+		.style("opacity", "0.2")
+}
+
 }
