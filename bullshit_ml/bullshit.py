@@ -17,9 +17,12 @@ new world order
 soros
 jews
 obama
-ufo
+kamala harris
 moon landing
 coronavirus
+new holocaust
+stop the steal
+communist chinese
 """.strip().split("\n")))
 
 # antichrist
@@ -109,7 +112,9 @@ for word in THEORIES:
     row = []
     for word2 in THEORIES:
         if word != word2:
-            row += [max(int(1000*model.wv.n_similarity(word, word2)), 0)]
+            porcodio = int(1000*model.wv.n_similarity(word, word2))
+            if porcodio < 50: porcodio = 0
+            row += [porcodio]
         else:
             row += [0]
     matrix += [row]

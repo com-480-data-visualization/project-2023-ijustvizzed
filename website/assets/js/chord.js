@@ -11,7 +11,7 @@ var arc = d3.arc()
 	.innerRadius(innerRadius)
 	.outerRadius(outerRadius)
 
-var ribbon = d3.ribbonArrow()
+var ribbon = d3.ribbon()
 	.radius(innerRadius - 0.5)
 	.padAngle(1 / innerRadius)
 
@@ -87,7 +87,7 @@ svg.append("g")
 		.append("textPath")
 			.attr("href", textId_href)
 			.attr("startOffset", d => d.startAngle * outerRadius)
-			.text(d => data["labels"][d.index]))
+			.text(d => data["labels"][d.index].join(" ")))
 		.call(g => g.append("title")
 			.text(d => `${data["labels"][d.index]}
 			believes ${formatValue(d3.sum(matrix[d.index]))}
