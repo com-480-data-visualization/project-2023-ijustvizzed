@@ -21,11 +21,18 @@
 }
 </style>
 
+<style>
+    .custom-padding {
+      padding-top: 1rem !important; /* Adjust as needed */
+      padding-bottom: 1rem !important; /* Adjust as needed */
+    }
+</style>
+
 <div id="descboxouter">
-	<div class="py-5">
+	<div class="py-5 custom-padding">
 		To learn more about a conspiracy theory and highlight it hover over the graphics.
 	</div>
-	<div id="descbox" class="py-5">
+	<div id="descbox" class="py-5 custom-padding">
 	</div>
 </div>
 	  
@@ -51,28 +58,45 @@
 				In today's world, conspiracy theories seem to be more prevalent than ever. From flat earth to QAnon, these theories can be found everywhere from social media to political rallies. Despite the seemingly outlandish nature of these theories, they continue to gain traction among many people. As researchers, we were surprised to find that conspiracy theories are still so popular today. <br/>
 				To investigate this phenomenon, we conducted a study using the transcripts of Alex Jones' Infowars podcast. Our findings shed light on the correlation between belief in conspiracy theories and a number of psychological factors, and offer insight into why these theories persist in modern society.
 			</div>
-		</div>
-	</div>
-	<style>
-		.wcloud:hover { opacity: .7 !important; cursor: pointer;}
-	</style>
-	<div id="conspwcloud"></div>
-	<div id="ohwow"></div>
-	<div class="row">
-		<div class="col-1"></div>
-		<div class="col-10">
+			<style>
+				.wcloud:hover { opacity: .7 !important; cursor: pointer;}
+			</style>
+			<div id="conspwcloud"></div>
+			<div id="ohwow"></div>
 			<div class="py-5">
 				In our recent study analyzing the prevalence of conspiracy theories in popular media, we created a bar plot to showcase the frequency of conspiracy theories discussed on Alex Jones' podcasts. As a controversial figure in the media landscape, Jones has gained notoriety for promoting a variety of conspiracy theories on his show, including those related to politics, technology, and health.
 				The bar plot that we created displays the number of times each conspiracy theory was mentioned on Jones' show over a period of several months, with the most frequently discussed theories represented by the tallest bars on the plot. Through our analysis, we found that some of the most commonly discussed conspiracy theories on Jones' show include those related to government surveillance, secret societies, and the so-called "deep state."
 				Our plot offers a revealing look at the types of topics that are of most interest to Jones and his listeners, and sheds light on the ways in which conspiracy theories can spread and gain traction in the media. By better understanding the prevalence of conspiracy theories in popular media, we hope to encourage critical thinking and skepticism in our society.
 			</div>
+			<div id="barplot"></div>
+			<style>
+				#scalethis {
+				  display: flex;
+				  justify-content: center;
+				  align-items: center;
+				}
+			
+				#scalethis svg {
+				  max-width: 100%;
+				  max-height: 100%;
+				}
+			  </style>
+			<div id="scalethis">
+				<div id="lineplot"></div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="row">
+		<div class="col-1"></div>
+		<div class="col-10">
+			
 		</div>
 		<div class="col-1"></div>
 	</div>
 
-	<div id="barplot"></div>
-
-	<div id="lineplot"></div>
+	
 
 
 </div>
@@ -80,51 +104,63 @@
 
 <script>
 
+async function d3load() {
+		await import("./assets/js/lineplot.js")
+			.then((module) => {
+				// Call the async function after import is resolved
+				module.d3drawlineplot(this.current);
+				})
+				.catch((error) => {
+				console.error('Error occurred while importing module:', error);
+				});
+		await import("./assets/js/chord.js")
+			.then((module) => {
+				// Call the async function after import is resolved
+				module.d3drawchord(this.current);
+				})
+				.catch((error) => {
+				console.error('Error occurred while importing module:', error);
+				});
+		await import('./assets/js/wordcloud.js')
+			.then((module) => {
+			// Call the async function after import is resolved
+			module.d3drawwordcloud(this.current);
+			})
+			.catch((error) => {
+			console.error('Error occurred while importing module:', error);
+			});
+		}
+
 (async function () {
+	this.current = "alex";
+	this.fixed = false;
 
-var current = "alex";
+	data = await d3.json("assets/data/dataset.json");
+	console.log(data["matrix"]);
 
-data = await d3.json("assets/data/dataset.json");
-console.log(data["matrix"]);
+	matrix = data["matrix"];
 
-matrix = data["matrix"];
+	innerRadius = 400
+	outerRadius = 406
+	textRadius = 406
+	width = 840
+	height = 840
 
-innerRadius = 400
-outerRadius = 406
-textRadius = 406
-width = 840
-height = 840
+	formatValue = x => `${x.toFixed(0) / 10}%`
 
-formatValue = x => `${x.toFixed(0) / 10}%`
+	color = d3.scaleOrdinal(data["labels"], d3.schemeCategory10)
 
-color = d3.scaleOrdinal(data["labels"], d3.schemeCategory10)
-
-import("./assets/js/lineplot.js")
+	await d3load();
+	import("./assets/js/descbox.js")
 	.then((module) => {
-		// Call the async function after import is resolved
-		module.d3drawlineplot(current);
-		})
-		.catch((error) => {
-		console.error('Error occurred while importing module:', error);
-		});
-import("./assets/js/chord.js")
-	.then((module) => {
-		// Call the async function after import is resolved
-		module.d3drawchord(current);
-		})
-		.catch((error) => {
-		console.error('Error occurred while importing module:', error);
-		});
-import('./assets/js/wordcloud.js')
-    .then((module) => {
-      // Call the async function after import is resolved
-      module.d3drawwordcloud(current);
-    })
-    .catch((error) => {
-      console.error('Error occurred while importing module:', error);
-    });
-
+				// Call the async function after import is resolved
+				module.initdescbox();
+				})
+				.catch((error) => {
+				console.error('Error occurred while importing module:', error);
+				});
 })();
+
 
 async function doswitch(guy) {
       // Perform asynchronous operations here
@@ -135,30 +171,7 @@ async function doswitch(guy) {
 		return;
 	  }
 	  this.current = guy;
-      import('./assets/js/wordcloud.js')
-		.then((module) => {
-		// Call the async function after import is resolved
-		module.d3drawwordcloud(guy);
-		})
-		.catch((error) => {
-		console.error('Error occurred while importing module:', error);
-    	});
-	  import("./assets/js/lineplot.js")
-			.then((module) => {
-				// Call the async function after import is resolved
-				module.d3drawlineplot(guy);
-				})
-				.catch((error) => {
-				console.error('Error occurred while importing module:', error);
-				});
-	  import("./assets/js/chord.js")
-			.then((module) => {
-				// Call the async function after import is resolved
-				module.d3drawchord(guy);
-				})
-				.catch((error) => {
-				console.error('Error occurred while importing module:', error);
-				});
+	  await d3load();
 	  console.log("Switch completed");
 	  var img = document.getElementById("guyimage")
 	  if(guy == "trump"){
@@ -167,6 +180,16 @@ async function doswitch(guy) {
 	  if(guy == "alex"){
 		img.src= "assets/img/alex.webp"
 	  }
+	  import("./assets/js/descbox.js").then((module) => {
+				// Call the async function after import is resolved
+				module.initdescbox();
+				})
+				.catch((error) => {
+				console.error('Error occurred while importing module:', error);
+				});
+	 window.fixed = false;
+	 var descbox = document.getElementById("descbox");
+	 descbox.innerHTML = "";
     }
 
 </script>
