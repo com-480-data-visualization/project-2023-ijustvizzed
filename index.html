@@ -23,8 +23,7 @@
 
 <div id="descboxouter">
 	<div class="py-5">
-		In today's world, conspiracy theories seem to be more prevalent than ever. From flat earth to QAnon, these theories can be found everywhere from social media to political rallies. Despite the seemingly outlandish nature of these theories, they continue to gain traction among many people. As researchers, we were surprised to find that conspiracy theories are still so popular today. <br/>
-		To investigate this phenomenon, we conducted a study using the transcripts of Alex Jones' Infowars podcast. Our findings shed light on the correlation between belief in conspiracy theories and a number of psychological factors, and offer insight into why these theories persist in modern society.
+		To learn more about a conspiracy theory and highlight it hover over the graphics.
 	</div>
 	<div id="descbox" class="py-5">
 	</div>
@@ -39,7 +38,15 @@
 				The Power of <u><i>Paranoia</i></u>: <br/>
 				Why Conspiracy Theories Persist
 			</h1>
-			<img src="assets/img/alex-jones-sexy.webp" class="img-fluid"/>
+			<div class="row">
+				<div class="col text-center centered-buttons">
+				  <button id="alexbutton" onclick="doswitch('alex')" class="btn btn-primary">Alex Jones</button>
+				</div>
+				<div class="col">
+				  <button id="donaldbutton" onclick="doswitch('trump')" class="btn btn-primary">Donald Trump</button>
+				</div>
+			  </div>
+			<img id="guyimage" src="assets/img/alex.webp" class="img-fluid"/>
 			<div class="py-5">
 				In today's world, conspiracy theories seem to be more prevalent than ever. From flat earth to QAnon, these theories can be found everywhere from social media to political rallies. Despite the seemingly outlandish nature of these theories, they continue to gain traction among many people. As researchers, we were surprised to find that conspiracy theories are still so popular today. <br/>
 				To investigate this phenomenon, we conducted a study using the transcripts of Alex Jones' Infowars podcast. Our findings shed light on the correlation between belief in conspiracy theories and a number of psychological factors, and offer insight into why these theories persist in modern society.
@@ -74,6 +81,9 @@
 <script>
 
 (async function () {
+
+var current = "alex";
+
 data = await d3.json("assets/data/dataset.json");
 console.log(data["matrix"]);
 
@@ -89,15 +99,76 @@ formatValue = x => `${x.toFixed(0) / 10}%`
 
 color = d3.scaleOrdinal(data["labels"], d3.schemeCategory10)
 
-
-
-import("./assets/js/wordcloud.js");
-import("./assets/js/lineplot.js");
-import("./assets/js/chord.js");
-import("./assets/js/wordcloud.js");
-
+import("./assets/js/lineplot.js")
+	.then((module) => {
+		// Call the async function after import is resolved
+		module.d3drawlineplot(current);
+		})
+		.catch((error) => {
+		console.error('Error occurred while importing module:', error);
+		});
+import("./assets/js/chord.js")
+	.then((module) => {
+		// Call the async function after import is resolved
+		module.d3drawchord(current);
+		})
+		.catch((error) => {
+		console.error('Error occurred while importing module:', error);
+		});
+import('./assets/js/wordcloud.js')
+    .then((module) => {
+      // Call the async function after import is resolved
+      module.d3drawwordcloud(current);
+    })
+    .catch((error) => {
+      console.error('Error occurred while importing module:', error);
+    });
 
 })();
+
+async function doswitch(guy) {
+      // Perform asynchronous operations here
+	  var buttonid = this.id;
+	  console.log("switching with ", guy);
+	  if(this.current == guy){
+		console.log("already on this guy", guy, this.current);
+		return;
+	  }
+	  this.current = guy;
+      import('./assets/js/wordcloud.js')
+		.then((module) => {
+		// Call the async function after import is resolved
+		module.d3drawwordcloud(guy);
+		})
+		.catch((error) => {
+		console.error('Error occurred while importing module:', error);
+    	});
+	  import("./assets/js/lineplot.js")
+			.then((module) => {
+				// Call the async function after import is resolved
+				module.d3drawlineplot(guy);
+				})
+				.catch((error) => {
+				console.error('Error occurred while importing module:', error);
+				});
+	  import("./assets/js/chord.js")
+			.then((module) => {
+				// Call the async function after import is resolved
+				module.d3drawchord(guy);
+				})
+				.catch((error) => {
+				console.error('Error occurred while importing module:', error);
+				});
+	  console.log("Switch completed");
+	  var img = document.getElementById("guyimage")
+	  if(guy == "trump"){
+		img.src= "assets/img/trump.jpg"
+	  }
+	  if(guy == "alex"){
+		img.src= "assets/img/alex.webp"
+	  }
+    }
+
 </script>
 
 

@@ -1,3 +1,5 @@
+export async function d3drawchord(type){
+	console.log("d3 draw chord type: ", type);
 var chord = d3.chordDirected()
 	.padAngle(12 / innerRadius)
 	.sortSubgroups(d3.descending)
@@ -15,6 +17,9 @@ var ribbon = d3.ribbonArrow()
 
 const textId_id = "mytext";
 const textId_href = "#mytext";
+
+// null out the html 
+d3.select("#ohwow").html(null)
 
 var svg = d3.create("svg")
 	.attr("id", "chord_diagram")
@@ -95,3 +100,4 @@ svg.append("g")
 		.attr("conspid", (data, i) => i)
 
 document.getElementById("ohwow").appendChild(svg.node());
+}
