@@ -77,13 +77,19 @@ svg.append("g")
 	.call(d3.axisBottom(x));
 svg.append("g")
 	.call(d3.axisLeft(y));
-import("./descbox.js").then((module) => {
-	// Call the async function after import is resolved
-	module.initdescbox();
-	})
-	.catch((error) => {
-	console.error('Error occurred while importing module:', error);
-	});
+
+	window.timeline_drawn = true;
+
+	if(window.wcloud_drawn && window.chord_drawn && window.timeline_drawn){
+		console.log("lineplot initdescbox");
+	  import("./descbox.js").then((module) => {
+		// Call the async function after import is resolved
+		module.initdescbox();
+		})
+		.catch((error) => {
+		console.error('Error occurred while importing module:', error);
+		});
+	}
 
 window.hover_lineplot = function(index) {
 	svg = d3.select("#chord_diagram")
