@@ -49,6 +49,7 @@ export async function initdescbox(){
             descbox.innerHTML = consp_desc[consp_id];
             window.hover_chord(consp_id);
             window.hover_lineplot(consp_id);
+            window.hover_conspbox(consp_id);
         }
     }
     function handleMouseOut(event) {
