@@ -108,11 +108,16 @@ svg.append("g")
 		.attr("conspid", (data, i) => i)
 
 document.getElementById("ohwow").appendChild(svg.node());
-import("./descbox.js").then((module) => {
-	// Call the async function after import is resolved
-	module.initdescbox();
-	})
-	.catch((error) => {
-	console.error('Error occurred while importing module:', error);
-	});
+window.chord_drawn = true;
+
+	if(window.wcloud_drawn && window.chord_drawn && window.timeline_drawn){
+		console.log("chord initdescbox");
+	  import("./descbox.js").then((module) => {
+		// Call the async function after import is resolved
+		module.initdescbox();
+		})
+		.catch((error) => {
+		console.error('Error occurred while importing module:', error);
+		});
+	}
 }

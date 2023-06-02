@@ -5,6 +5,8 @@ export async function initdescbox(){
     
     console.log("descbox:", elements);
     
+    console.log(window.wcloud_drawn, window.chord_drawn, window.timeline_drawn);
+
     /*
     TODO: Update this and use the actual dataset
     */

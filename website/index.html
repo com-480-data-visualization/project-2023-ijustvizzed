@@ -134,6 +134,9 @@ async function d3load() {
 (async function () {
 	this.current = "alex";
 	this.fixed = false;
+	this.wcloud_drawn = false;
+	this.chord_drawn = false;
+	this.timeline_drawn = false;
 
 	data = await d3.json("assets/data/dataset.json");
 	console.log(data["matrix"]);
@@ -151,14 +154,6 @@ async function d3load() {
 	color = d3.scaleOrdinal(data["labels"], d3.schemeCategory10)
 
 	await d3load();
-	import("./assets/js/descbox.js")
-	.then((module) => {
-				// Call the async function after import is resolved
-				module.initdescbox();
-				})
-				.catch((error) => {
-				console.error('Error occurred while importing module:', error);
-				});
 })();
 
 
@@ -171,6 +166,9 @@ async function doswitch(guy) {
 		return;
 	  }
 	  this.current = guy;
+	  this.wcloud_drawn = false;
+	  this.chord_drawn = false;
+	  this.timeline_drawn = false;
 	  await d3load();
 	  console.log("Switch completed");
 	  var img = document.getElementById("guyimage")

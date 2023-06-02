@@ -109,6 +109,10 @@ export async function d3drawwordcloud(type){
           })
           .text(function(d) { return d.text; });    
 
+        window.wcloud_drawn = true;
+
+        if(window.wcloud_drawn && window.chord_drawn && window.timeline_drawn){
+          console.log("wordcloud initdescbox");
           import("./descbox.js").then((module) => {
             // Call the async function after import is resolved
             module.initdescbox();
@@ -116,6 +120,8 @@ export async function d3drawwordcloud(type){
             .catch((error) => {
             console.error('Error occurred while importing module:', error);
             });
+        }
+          
   }
 
   /*
