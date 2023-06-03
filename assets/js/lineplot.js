@@ -31,7 +31,11 @@ var svg = d3.select("#lineplot")
 		.attr("transform", `translate(${margin.left},${margin.top})`);
 
 //Read the data
-var data_lineplot = await d3.csv("assets/data/timeline.csv")
+if (type == "trump") {
+	var data_lineplot = await d3.csv("assets/data/timeline_trump.csv")
+} else {
+	var data_lineplot = await d3.csv("assets/data/timeline_jones.csv")
+}
 
 var timedata = data_lineplot.map(function(d) { 
 	var dict = {}
