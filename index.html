@@ -44,6 +44,7 @@
 				In today's world, conspiracy theories seem to be more prevalent than ever. From flat earth to QAnon, these theories can be found everywhere from social media to political rallies. Despite the seemingly outlandish nature of these theories, they continue to gain traction among many people. As researchers, we were surprised to find that conspiracy theories are still so popular today. <br/>
 				To investigate this phenomenon, we conducted a study using the transcripts of Alex Jones' Infowars podcast. Our findings shed light on the correlation between belief in conspiracy theories and a number of psychological factors, and offer insight into why these theories persist in modern society.
 			</div>
+			<!--
 			<div class="row custom-padding">
 				<div class="col-6 d-grid gap-2">
 					<button type="button" id="alexbutton" onclick="doswitch('alex')" class="btn btn-primary btn-lg btn-block">Alex Jones</button>
@@ -51,7 +52,8 @@
 				<div class="col-6 d-grid gap-2">
 					<button type="button" id="donaldbutton" onclick="doswitch('trump')" class="btn btn-warning btn-lg btn-block">Donald Trump</button>
 				</div>
-			  </div>
+			</div>
+			-->
 			<img id="guyimage" src="assets/img/alex.webp" class="img-fluid"/>
 			<div class="py-5">
 				In our recent study analyzing the prevalence of conspiracy theories in popular media, we created a bar plot to showcase the frequency of conspiracy theories discussed on Alex Jones' podcasts. As a controversial figure in the media landscape, Jones has gained notoriety for promoting a variety of conspiracy theories on his show, including those related to politics, technology, and health.
@@ -74,7 +76,6 @@
 				</div>
 			</div>
 			<!-- <div id="conspwcloud"></div> -->
-			<div id="ohwow" class="custom-padding"></div>
 			<div id="barplot"></div>
 			<style>
 				#scalethis {
@@ -88,24 +89,26 @@
 				  max-height: 100%;
 				}
 			  </style>
-			<div id="scalethis">
-				<div id="lineplot"></div>
+			<div class="row custom-padding">
+				<div class="col-12">
+					<div id="scalethis">
+						<div id="lineplot"></div>
+					</div>
+					<div class="row">
+						<div class="col-1">
+
+						</div>
+						<div class="col-11">
+							<div id="source_selector">
+							</div>
+						</div>
+					</div>
+					
+				</div>		
 			</div>
+			<div id="ohwow" class="custom-padding"></div>		
 		</div>
 	</div>
-	
-	
-	<div class="row">
-		<div class="col-1"></div>
-		<div class="col-10">
-			
-		</div>
-		<div class="col-1"></div>
-	</div>
-
-	
-
-
 </div>
 
 
@@ -115,7 +118,7 @@ async function d3load() {
 		await import("./assets/js/lineplot.js")
 			.then((module) => {
 				// Call the async function after import is resolved
-				module.d3drawlineplot(this.current);
+				module.d3drawlineplot();
 				})
 				.catch((error) => {
 				console.error('Error occurred while importing module:', error);
@@ -123,7 +126,7 @@ async function d3load() {
 		await import("./assets/js/chord.js")
 			.then((module) => {
 				// Call the async function after import is resolved
-				module.d3drawchord(this.current);
+				module.d3drawchord();
 				})
 				.catch((error) => {
 				console.error('Error occurred while importing module:', error);
@@ -131,7 +134,15 @@ async function d3load() {
 		await import('./assets/js/description.js')
 			.then((module) => {
 			// Call the async function after import is resolved
-			module.drawdescboxes(this.current);
+			module.drawdescboxes();
+			})
+			.catch((error) => {
+			console.error('Error occurred while importing module:', error);
+			});
+		await import('./assets/js/lineplot_comparison.js')
+			.then((module) => {
+			// Call the async function after import is resolved
+			module.init_lineplot_comp();
 			})
 			.catch((error) => {
 			console.error('Error occurred while importing module:', error);
@@ -139,7 +150,6 @@ async function d3load() {
 		}
 
 (async function () {
-	this.current = "alex";
 	this.fixed = false;
 	this.wcloud_drawn = false;
 	this.chord_drawn = false;
