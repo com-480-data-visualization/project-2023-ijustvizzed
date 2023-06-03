@@ -23,6 +23,7 @@ coronavirus
 new holocaust
 stop the steal
 communist chinese
+sandy hook
 """.strip().split("\n")))
 
 # antichrist

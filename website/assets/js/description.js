@@ -1,4 +1,4 @@
-export async function drawdescboxes(type){
+export async function drawdescboxes(){
 
     function getColumnSums(csvData) {
         var columnSums = {};
@@ -18,7 +18,6 @@ export async function drawdescboxes(type){
         return columnSums;
       }
 
-    console.log("create description box: ", type);
     var data_lineplot = await d3.csv("assets/data/timeline.csv")
     var data = await d3.json("assets/data/dataset.json");
     var column2sums  = getColumnSums(data_lineplot);

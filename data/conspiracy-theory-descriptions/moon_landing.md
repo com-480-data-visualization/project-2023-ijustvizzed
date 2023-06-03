@@ -1,0 +1,3 @@
+The moon landing conspiracy theory posits that the United States faked the Apollo moon landings in 1969 and subsequent missions. Proponents of this theory argue that the moon landings were filmed on Earth in a staged setting. They point to alleged anomalies in the footage, photographs, and scientific data as evidence of a cover-up. However, overwhelming evidence from multiple sources, including the testimonies of thousands of scientists and astronauts, confirms the authenticity of the moon landings and debunks these conspiracy claims.
+
+More information: <https://en.wikipedia.org/wiki/Moon_landing_conspiracy_theories>

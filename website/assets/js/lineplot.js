@@ -1,5 +1,4 @@
-export async function d3drawlineplot(type){
-	console.log("d3 draw lineplot type: ", type);
+export async function d3drawlineplot(){
 // set the dimensions and margins of the graph
 
 var container = document.getElementById('scalethis');
@@ -30,12 +29,7 @@ var svg = d3.select("#lineplot")
 	.append("g")
 		.attr("transform", `translate(${margin.left},${margin.top})`);
 
-//Read the data
-if (type == "trump") {
-	var data_lineplot = await d3.csv("assets/data/timeline_trump.csv")
-} else {
-	var data_lineplot = await d3.csv("assets/data/timeline_jones.csv")
-}
+var data_lineplot = await d3.csv("assets/data/timeline.csv")
 
 var timedata = data_lineplot.map(function(d) { 
 	var dict = {}

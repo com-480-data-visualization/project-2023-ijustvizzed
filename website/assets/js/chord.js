@@ -1,5 +1,4 @@
-export async function d3drawchord(type){
-	console.log("d3 draw chord type: ", type);
+export async function d3drawchord(){
 var chord = d3.chordDirected()
 	.padAngle(12 / innerRadius)
 	.sortSubgroups(d3.descending)
