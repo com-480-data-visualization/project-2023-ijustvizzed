@@ -27,16 +27,11 @@
       padding-bottom: 1rem !important; /* Adjust as needed */
     }
 </style>
-
-<div id="descboxouter">
-	<div class="py-5 custom-padding">
-		To learn more about a conspiracy theory and highlight it hover over the graphics.
-	</div>
-	<div id="descbox" class="py-5 custom-padding">
-	</div>
-</div>
 	  
-
+<style type="text/css">
+    p.button:hover { cursor: pointer; }
+    p.padding  { padding:0; margin:0;}
+ </style>
 <div class="container">
 	<div class="row">
 		<div class="col-1"></div>
@@ -45,29 +40,41 @@
 				The Power of <u><i>Paranoia</i></u>: <br/>
 				Why Conspiracy Theories Persist
 			</h1>
-			<div class="row">
-				<div class="col text-center centered-buttons">
-				  <button id="alexbutton" onclick="doswitch('alex')" class="btn btn-primary">Alex Jones</button>
-				</div>
-				<div class="col">
-				  <button id="donaldbutton" onclick="doswitch('trump')" class="btn btn-primary">Donald Trump</button>
-				</div>
-			  </div>
-			<img id="guyimage" src="assets/img/alex.webp" class="img-fluid"/>
 			<div class="py-5">
 				In today's world, conspiracy theories seem to be more prevalent than ever. From flat earth to QAnon, these theories can be found everywhere from social media to political rallies. Despite the seemingly outlandish nature of these theories, they continue to gain traction among many people. As researchers, we were surprised to find that conspiracy theories are still so popular today. <br/>
 				To investigate this phenomenon, we conducted a study using the transcripts of Alex Jones' Infowars podcast. Our findings shed light on the correlation between belief in conspiracy theories and a number of psychological factors, and offer insight into why these theories persist in modern society.
 			</div>
-			<style>
-				.wcloud:hover { opacity: .7 !important; cursor: pointer;}
-			</style>
-			<div id="conspwcloud"></div>
-			<div id="ohwow"></div>
+			<div class="row custom-padding">
+				<div class="col-6 d-grid gap-2">
+					<button type="button" id="alexbutton" onclick="doswitch('alex')" class="btn btn-primary btn-lg btn-block">Alex Jones</button>
+				</div>
+				<div class="col-6 d-grid gap-2">
+					<button type="button" id="donaldbutton" onclick="doswitch('trump')" class="btn btn-warning btn-lg btn-block">Donald Trump</button>
+				</div>
+			  </div>
+			<img id="guyimage" src="assets/img/alex.webp" class="img-fluid"/>
 			<div class="py-5">
 				In our recent study analyzing the prevalence of conspiracy theories in popular media, we created a bar plot to showcase the frequency of conspiracy theories discussed on Alex Jones' podcasts. As a controversial figure in the media landscape, Jones has gained notoriety for promoting a variety of conspiracy theories on his show, including those related to politics, technology, and health.
 				The bar plot that we created displays the number of times each conspiracy theory was mentioned on Jones' show over a period of several months, with the most frequently discussed theories represented by the tallest bars on the plot. Through our analysis, we found that some of the most commonly discussed conspiracy theories on Jones' show include those related to government surveillance, secret societies, and the so-called "deep state."
 				Our plot offers a revealing look at the types of topics that are of most interest to Jones and his listeners, and sheds light on the ways in which conspiracy theories can spread and gain traction in the media. By better understanding the prevalence of conspiracy theories in popular media, we hope to encourage critical thinking and skepticism in our society.
 			</div>
+			<style>
+				.wcloud:hover { opacity: .7 !important; cursor: pointer;}
+			</style>
+			<div id="conspiracies">
+				<p class="h2"><u>Conspiracies:</u></p>
+				<div id="conp_overbox" class="row custom-padding border border-4 rounded" style="border-color:grey !important;">
+					<div id="consp_name" class="col-3">
+						<p class="h3">Conspiracy</p>
+					</div>
+					<div id="consp_desc" class="col-9">
+						<div id="descbox" class="py-1">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- <div id="conspwcloud"></div> -->
+			<div id="ohwow" class="custom-padding"></div>
 			<div id="barplot"></div>
 			<style>
 				#scalethis {
@@ -121,10 +128,10 @@ async function d3load() {
 				.catch((error) => {
 				console.error('Error occurred while importing module:', error);
 				});
-		await import('./assets/js/wordcloud.js')
+		await import('./assets/js/description.js')
 			.then((module) => {
 			// Call the async function after import is resolved
-			module.d3drawwordcloud(this.current);
+			module.drawdescboxes(this.current);
 			})
 			.catch((error) => {
 			console.error('Error occurred while importing module:', error);

@@ -1,6 +1,10 @@
 export async function initdescbox(){
     var descbox = document.getElementById("descbox")
 
+    var defaultdescp = "<p>Hover over or click a conspiracy theory to highlight it and show it's description. To unhighlight a theory click anywhere else.</p>"
+
+    descbox.innerHTML = defaultdescp;
+
     var elements = document.querySelectorAll('.consp');
     
     console.log("descbox:", elements);
@@ -32,9 +36,10 @@ export async function initdescbox(){
         // Perform your desired actions here
         if(typeof consp_id === 'undefined'){
             window.fixed = false;
-            descbox.innerHTML = "";
+            descbox.innerHTML = defaultdescp;
             window.unhighlight_lineplot();
             window.unhighlight_chord();
+            window.unclick_conspbox();
         }
       };
 
@@ -49,13 +54,15 @@ export async function initdescbox(){
             descbox.innerHTML = consp_desc[consp_id];
             window.hover_chord(consp_id);
             window.hover_lineplot(consp_id);
+            window.hover_conspbox(consp_id);
         }
     }
     function handleMouseOut(event) {
         if(!window.fixed){
-            descbox.innerHTML = "";
-            //window.unhighlight_lineplot();
-            //window.unhighlight_chord();
+            descbox.innerHTML = defaultdescp;
+            window.unhighlight_lineplot();
+            window.unhighlight_chord();
+            window.unhighlight_conspbox();
         }
     }
     function handleClick(event) {
@@ -67,6 +74,7 @@ export async function initdescbox(){
         descbox.innerHTML = consp_desc[consp_id];
         window.hover_chord(consp_id);
         window.hover_lineplot(consp_id);
+        window.click_conspbox(consp_id);
     }
 }
 
