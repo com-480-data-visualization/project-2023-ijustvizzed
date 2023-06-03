@@ -62,7 +62,7 @@ var consp_desc = {
     }
     function handleMouseOut(event) {
         if(!window.fixed){
-            descbox.innerHTML = defaultdescp;
+            descbox.innerHTML = "";
             window.unhighlight_lineplot();
             window.unhighlight_chord();
             window.unhighlight_conspbox();
