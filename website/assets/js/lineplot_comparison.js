@@ -91,13 +91,19 @@ export async function init_lineplot_comp(){
         var inp = document.createElement("input");
         inp.classList.add("form-check-input");
         inp.type = "checkbox";
-				src = src.replaceAll(" ", "_")
+		src = src.replaceAll(" ", "_")
         inp.id = "checkbox_" + src;
         inp.addEventListener("input", select_sources);
         var lbl = document.createElement("label");
         lbl.classList.add("form-check-label");
         lbl.htmlFor = "checkbox_" + src;
-        lbl.textContent = src;
+        if(src == "infowars"){
+            var boldElement = document.createElement('b');
+            boldElement.textContent = src;
+            lbl.appendChild(boldElement);
+        }else{
+            lbl.textContent = src;
+        }
         newDiv.appendChild(inp);
         newDiv.appendChild(lbl);
         selectordiv.appendChild(newDiv);
