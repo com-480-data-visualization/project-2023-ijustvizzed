@@ -80,7 +80,7 @@ export async function init_lineplot_comp(){
 	 </div>    
     */
     // draw selector buttons at the bottom
-		var sources = ["axios", "cnbc", "cnn", "economist", "mashable", "politico", "reuters", "techcrunch", "the hill", "the new york times", "the verge", "vice", "vox", "washington post", "wired"]
+		var sources = ["infowars", "axios", "cnbc", "cnn", "economist", "mashable", "politico", "reuters", "techcrunch", "the hill", "the new york times", "the verge", "vice", "vox", "washington post", "wired"]
 
     var selectordiv = document.getElementById("source_selector");
     for(var i in sources){
