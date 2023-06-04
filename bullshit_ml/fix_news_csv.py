@@ -1,6 +1,13 @@
 #!/usr/bin/env python3
+
+# The news dataset is messed up because there are newlines in the CSV that
+# are not supposed to be there. This script fixes the CSV format for further
+# processing
+
 import re
+
 date_regex = re.compile(r"^20\d\d-\d\d-\d\d")
+
 with open("all-the-news-2-1.csv", "r") as orig, open("preprocessed.csv", "w") as prep:
     fixed_line = ""
     for line in orig:
