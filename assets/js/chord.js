@@ -109,8 +109,8 @@ svg.append("g")
 document.getElementById("ohwow").appendChild(svg.node());
 window.chord_drawn = true;
 
-	if(window.wcloud_drawn && window.chord_drawn && window.timeline_drawn){
-	  import("./descbox.js").then((module) => {
+	if(window.wcloud_drawn && window.chord_drawn && window.timeline_drawn && window.drawn_checkbox){
+		import("./descbox.js").then((module) => {
 		// Call the async function after import is resolved
 		module.initdescbox();
 		})

@@ -88,8 +88,8 @@ svg.append("g")
 
 	window.timeline_drawn = true;
 
-	if(window.wcloud_drawn && window.chord_drawn && window.timeline_drawn){
-	  import("./descbox.js").then((module) => {
+	if(window.wcloud_drawn && window.chord_drawn && window.timeline_drawn && window.drawn_checkbox){
+		import("./descbox.js").then((module) => {
 		// Call the async function after import is resolved
 		module.initdescbox();
 		})
@@ -97,7 +97,7 @@ svg.append("g")
 		console.error('Error occurred while importing module:', error);
 		});
 	}
-
+	
 window.hover_lineplot = function(index) {
 	svg = d3.select("#chord_diagram")
 	d3.select("#lineplot").selectAll("path")

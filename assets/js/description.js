@@ -22,15 +22,15 @@ export async function drawdescboxes(){
     
     window.wcloud_drawn = true;
 
-    if(window.wcloud_drawn && window.chord_drawn && window.timeline_drawn){
-      import("./descbox.js").then((module) => {
-        // Call the async function after import is resolved
-        module.initdescbox();
-        })
-        .catch((error) => {
-        console.error('Error occurred while importing module:', error);
-        });
-    }
+    if(window.wcloud_drawn && window.chord_drawn && window.timeline_drawn && window.drawn_checkbox){
+		import("./descbox.js").then((module) => {
+		// Call the async function after import is resolved
+		module.initdescbox();
+		})
+		.catch((error) => {
+		console.error('Error occurred while importing module:', error);
+		});
+	}
 
     window.hover_conspbox = function(index){
         var consp_box = document.getElementById("conp_overbox");
