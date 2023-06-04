@@ -10,7 +10,7 @@
 <body>
 
 <style>
-	#descboxouter {
+#descboxouter {
   position: fixed;
   top: 50%;
   right: 5%;
@@ -18,19 +18,70 @@
   transform: translateY(-50%);
   overflow-wrap: break-word;
 }
+
+.custom-padding {
+	padding-top: 1rem !important; 
+	padding-bottom: 1rem !important; 
+}
+
+#conp_overbox {
+	border-color:#fff !important;
+	flex-wrap: inherit;
+}
+.firstcol {
+	min-width: 17em;
+}
+#descbox {
+	height: 20em;
+	border: 1px solid #ccc;
+	position: relative;
+	border-radius: 6px;
+	padding: 10px;
+	top: 1em;
+}
+#descbox::after {
+	content: "Description";
+	font-size: 0.8em;
+	position: absolute;
+	top: -10px;
+	left: auto;
+	right: auto;
+	padding: 0 10px;
+	background: #fff;
+}
+.myborder {
+	border: 1px solid #ccc;
+	position: relative;
+	border-radius: 6px;
+	padding: 10px
+}
+.myborder::before {
+	content: "Publications";
+	font-size: 0.8em;
+	position: absolute;
+	top: -10px;
+	padding: 0 10px;
+	background: #fff;
+}
+
+.wcloud:hover { opacity: .7 !important; cursor: pointer;}
+p.button:hover { cursor: pointer; }
+p.padding  { padding:0; margin:0;}
+
+
+#scalethis {
+	justify-content: center;
+	align-items: center;
+}
+
+#scalethis svg {
+	max-width: 100%;
+	max-height: 100%;
+}
+
 </style>
 
-<style>
-    .custom-padding {
-      padding-top: 1rem !important; /* Adjust as needed */
-      padding-bottom: 1rem !important; /* Adjust as needed */
-    }
-</style>
 	  
-<style type="text/css">
-    p.button:hover { cursor: pointer; }
-    p.padding  { padding:0; margin:0;}
- </style>
 <div class="container">
 	<div class="row">
 		<div class="col-1"></div>
@@ -46,16 +97,6 @@
 				This project aims to shed light on the prevalence and interconnections of various conspiracy theories that have captured public attention and sparked debate.
 				We explore the presence and portrayal of conspiracy theories in mainstream media and the Infowars podcast by Alex Jones. 				
 			</div>
-			<!--
-			<div class="row custom-padding">
-				<div class="col-6 d-grid gap-2">
-					<button type="button" id="alexbutton" onclick="doswitch('alex')" class="btn btn-primary btn-lg btn-block">Alex Jones</button>
-				</div>
-				<div class="col-6 d-grid gap-2">
-					<button type="button" id="donaldbutton" onclick="doswitch('trump')" class="btn btn-warning btn-lg btn-block">Donald Trump</button>
-				</div>
-			</div>
-			-->
 			<img id="guyimage" src="assets/img/alex.webp" class="img-fluid"/>
 			<div class="py-5">
 				To study conspiracy theories we pick 11 theories that play 
@@ -67,22 +108,7 @@
 				To show how conspiracy theories are interconnected we implement a chord diagram that for the selected conspiracy 
 				theory, shows its connection to other conspiracy theories.
 			</div>
-			<style>
-				.wcloud:hover { opacity: .7 !important; cursor: pointer;}
-			</style>
-			<!-- <div id="conspwcloud"></div> -->
 			<div id="barplot"></div>
-			<style>
-				#scalethis {
-				  justify-content: center;
-				  align-items: center;
-				}
-			
-				#scalethis svg {
-				  max-width: 100%;
-				  max-height: 100%;
-				}
-			  </style>
 		</div>
 	</div>
 </div>
@@ -96,47 +122,6 @@
 			</div>
 		</div>
 		<div id="consp_desc" class="col-9">
-			<style>
-				#conp_overbox {
-					border-color:#fff !important;
-					flex-wrap: inherit;
-				}
-				.firstcol {
-					min-width: 17em;
-				}
-				#descbox {
-					height: 20em;
-					border: 1px solid #ccc;
-					position: relative;
-					border-radius: 6px;
-					padding: 10px;
-					top: 1em;
-				}
-				#descbox::after {
-					content: "Description";
-					font-size: 0.8em;
-					position: absolute;
-					top: -10px;
-					left: auto;
-					right: auto;
-					padding: 0 10px;
-					background: #fff;
-				}
-				.myborder {
-					border: 1px solid #ccc;
-					position: relative;
-					border-radius: 6px;
-					padding: 10px
-				}
-				.myborder::before {
-					content: "Publications";
-					font-size: 0.8em;
-					position: absolute;
-					top: -10px;
-					padding: 0 10px;
-					background: #fff;
-				}
-			</style>
 			<div id="scalethis" class="container">
 				<div id="lineplot_publications"></div>
 				<div class="row myborder" id="publications_box">
