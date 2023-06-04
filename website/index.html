@@ -177,6 +177,7 @@ async function d3load() {
 	this.wcloud_drawn = false;
 	this.chord_drawn = false;
 	this.timeline_drawn = false;
+	this.drawn_checkbox = false;
 
 	data = await d3.json("assets/data/dataset.json");
 	console.log(data["matrix"]);
@@ -200,6 +201,7 @@ async function d3load() {
         }
         var type = data['labels'][11].join(" ");
       document.getElementById("lineplotsvg_pub_"+type.replaceAll(" ", "_")).style.display = "block";
+
 })();
 
 

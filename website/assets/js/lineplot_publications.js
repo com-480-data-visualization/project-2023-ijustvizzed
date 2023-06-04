@@ -118,7 +118,7 @@ svg.append("g")
 
 	window.timeline_drawn = true;
 
-	if(window.wcloud_drawn && window.chord_drawn && window.timeline_drawn){
+	if(window.wcloud_drawn && window.chord_drawn && window.timeline_drawn && window.drawn_checkbox){
 		import("./descbox.js").then((module) => {
 		// Call the async function after import is resolved
 		module.initdescbox();

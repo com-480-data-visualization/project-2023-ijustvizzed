@@ -105,8 +105,20 @@ export async function init_lineplot_comp(){
 
     choose_conspiracy();
 
+    window.drawn_checkbox = true;
+
     window.choose_conspiracy = choose_conspiracy;
     window.select_sources = select_sources;
+
+    if(window.wcloud_drawn && window.chord_drawn && window.timeline_drawn && window.drawn_checkbox){
+		import("./descbox.js").then((module) => {
+		// Call the async function after import is resolved
+		module.initdescbox();
+		})
+		.catch((error) => {
+		console.error('Error occurred while importing module:', error);
+		});
+	}
 
     function choose_conspiracy(){
         // iterate over radio buttons and for the checked draw the lineplot for that conspiracy
