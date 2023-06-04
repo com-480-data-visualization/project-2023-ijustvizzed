@@ -3,11 +3,9 @@ export async function initdescbox(){
 
     var defaultdescp = "<p>Hover over or click a conspiracy theory to highlight it and show it's description. To unhighlight a theory click anywhere else.</p>"
 
-    descbox.innerHTML = defaultdescp;
+    descbox.innerHTML = "";
 
     var elements = document.querySelectorAll('.consp');
-
-    
     
 /*
 TODO: Update this and use the actual dataset
@@ -46,7 +44,7 @@ var consp_desc = {
         // Perform your desired actions here
         if(typeof consp_id === 'undefined'){
             window.fixed = false;
-            descbox.innerHTML = defaultdescp;
+            descbox.innerHTML = "";
             window.unhighlight_lineplot();
             window.unhighlight_chord();
             window.unclick_conspbox();
@@ -95,6 +93,23 @@ var consp_desc = {
       document.getElementById("lineplotsvg_pub_"+type.replaceAll(" ", "_")).style.display = "block";
         // window.show_comp_lineplot(consp_id);
     }
+
+    // highglight a conspiracy in the begging
+    document.getElementById("checkbox_" + "cnn").checked = true
+    //document.getElementById("checkbox_" + "infowars").checked = true
+    document.getElementById("checkbox_" + "vice").checked = true
+    var consp_id = 0;
+    descbox.innerHTML = consp_desc[consp_id];
+            window.hover_chord(consp_id);
+            window.hover_lineplot(consp_id);
+            window.hover_conspbox(consp_id);
+					  for (var x in data['labels']) {
+							var type = data['labels'][x].join(" ");
+							document.getElementById("lineplotsvg_pub_"+type.replaceAll(" ", "_")).style.display = "none";
+						}
+						var type = data['labels'][consp_id].join(" ");
+					  document.getElementById("lineplotsvg_pub_"+type.replaceAll(" ", "_")).style.display = "block";
+                      window.select_sources();
 }
 
 

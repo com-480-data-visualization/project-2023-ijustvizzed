@@ -45,7 +45,7 @@
 				From covid-19 denial to obama's citizenship, these theories can be found everywhere from social media to political rallies. 
 				Despite the seemingly outlandish nature of these theories, they continue to gain traction among many people.<br/>
 				This project aims to shed light on the prevalence and interconnections of various conspiracy theories that have captured public attention and sparked debate.
-				We explore the presence and portrayal of conspiracy theories in mainstream media and the Alex Jones podcast. 				
+				We explore the presence and portrayal of conspiracy theories in mainstream media and the Infowars podcast by Alex Jones. 				
 			</div>
 			<!--
 			<div class="row custom-padding">
@@ -61,8 +61,12 @@
 			<div class="py-5">
 				To study conspiracy theories we pick 11 theories that play 
 				an important role in modern populist politics in the United States of America.
-				To show their prevalence in mainstream media we
-				<em>Hover over and click on a conspiracy theory to highlight it on the Chord diagram and the timeline.</em> 
+				We analyze transcripts from the Inforwars podcast as well as news articles/essays from 15 mainstream media outlets 
+				from January 2016 to April 2020.<br>
+				To see the prevalence of certain conspiracy theories over time and across different media outlets hover or click 
+				on a conspiracy theory. It will show mentions of the theory over time for the selected publications.
+				To show how conspiracy theories are interconnected we implement a chord diagram that for the selected conspiracy 
+				theory, shows it's connection to other conspiracy theories.
 			</div>
 			<style>
 				.wcloud:hover { opacity: .7 !important; cursor: pointer;}
@@ -92,7 +96,7 @@
 		<div id="consp_desc" class="col-9">
 			<style>
 				#descbox {
-					height: 15em;
+					height: 8em;
 				}
 				.myborder {
 					border: 1px solid #ccc;
@@ -113,13 +117,15 @@
 				<div class="row">
 					<div id="lineplot_publications"></div>
 				</div>
-				<div class="row myborder" >
+				<div class="row myborder" id="publications_box">
 						<div id="source_selector"> </div>
 				</div>
 			</div>
 			<div id="descbox" class="py-1">
 			</div>
-			<div id="ohwow" class="custom-padding"></div>		
+			<div class="row">
+				<div id="ohwow" class="custom-padding"></div>	
+			</div>
 		</div>
 	</div>
 </div>
