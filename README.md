@@ -219,7 +219,7 @@ Due: 4th June, 5pm
 Please refer to our [report][report] for details on the dataset, design and
 implementation of our project.
 
-The screencast for milestone 3 is available at TODO.
+The screencast for milestone 3 is available at <https://go.epfl.ch/com480-conspiracies-screencast>.
 
 
 ## Late policy
