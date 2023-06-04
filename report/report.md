@@ -194,23 +194,81 @@ Especially for this media outlet, the corresponding graphs would have been very
 interesting to analyze due to its known closeness to right-wing politicians and
 conspiracy theorists.
 
+## Visualizations
 
+### Line Plots (Popularity of Conspiracy Theories Over Time)
 
+The line plots are created using D3.js' line plotting functionality, with the
+x-axis being a time scale and the y-axis being a linear scale.
+We create one line plot per conspiracy theory with a line per media outlet.
+The lines can be shown or hidden per media outlet via checkboxes below the
+graph.
+This allows easier comparison of selected data sources in case the graph is too
+cluttered when all sources are selected. 
 
+Code snippet [@lst:timeline] shows how each line is plotted.
+Note that by default each line has an opacity of 0 and is consequently hidden
+unless selected by the corresponding checkbox and that each line is assigned a
+custom class for styling and for simple selection in the code to hide or unhide
+a line.
 
-
-
-
-An example for code blocks:
-
-~~~{#lst:test .bash .numberLines caption="test"}
-hello world
-test
+~~~{#lst:timeline .javascript .numberLines caption="Code for creating the lines in the timeline graphs"}
+publications.forEach((label, i) => {
+	svg.append("path")
+		.datum(timedata)
+		.attr("fill", "none")
+		.attr("stroke", color(label))
+		.attr("stroke-width", 1.5)
+		.attr("class", "lineplot_pub_"+label.join("_"))
+		.attr("opacity", "0")
+		.attr("d", d3.line()
+			.x(function(d) { return x(d["date"]) })
+			.y(function(d) { 
+				return y(d[label.join(" ")]) 
+			})
+		)
+})
 ~~~
 
-References work like this: [@Lst:test]
+### Chord Chart (Links Between Conspiracy Theories)
+
+For our chord chart, we again leverage functionality built into D3.js.
+In this case, we use a directed chord graph via \texttt{d3.chordDirected}.
+The ribbon color in the chord chart depends on the selected conspiracy theory.
+The ribbon width encodes the cosine similarity determined in our data analysis
+step.
+
+By default, all ribbons are greyed out.
+Hovering over one of the conspiracy theories highlights the corresponding
+ribbons and shows a brief description of the corresponding conspiracy theory.
+Clicking on the theory makes this selection permanent and the permanent
+selection can be disabled again by clicking outside of the chord chart.
+
+[@Fig:chord] provides an example for this chord chart with the coronavirus
+complex highlighted.
+As expected, the chord chart exhibits a strong link towards the China complex,
+with an interesting relations to chemtrails as well.
+
+![The chord chart with the _coronavirus_ complex highlighted](assets/chord.png){#fig:chord}
 
 # Peer Assessment
+
+# Conclusion
+
+At the beginning of the semester, we chose a very ambitious dataset.
+The dataset does not contain numerical data that can easily be visualized,
+consequently requiring extensive preprocessing and information extraction.
+During this process, we encountered multiple issues with our dataset and our
+originally intended visualizations, requiring us to pivot both to a different
+dataset than originally intended as well as different visualization methods.
+
+Consequently, the final implementation differs from the previously submitted
+milestones in multiple regards.
+Nevertheless, we are convinced that our visualization sheds light on the
+prevalence of conspiracy theories in the US-American media landscape and allows
+a visitor to gain insights into the train of thought of Alex Jones in his
+Infowars podcast through connections in between conspiracy theories and their
+development over time.
 
 # References
 
