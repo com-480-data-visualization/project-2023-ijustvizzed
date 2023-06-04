@@ -271,7 +271,8 @@ _Florian Hofhammer_ contributed to dataset collection and preprocessing.
 The latter was joint effort with _Luca Di Bartolomeo_.
 _Florian Hofhammer_ also was responsible for the initial setup of the project,
 the development environment and automated deployment of the website as well as
-most of the documentation throughout the project.
+most of the documentation throughout the project, including recording the
+screencast.
 
 _Luca Di Bartolomeo_ created the first draft of the website and focused mostly
 on the Word2Vec data processing due to his previous experience in this area.
