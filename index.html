@@ -41,8 +41,11 @@
 				Why Conspiracy Theories Persist
 			</h1>
 			<div class="py-5">
-				In today's world, conspiracy theories seem to be more prevalent than ever. From flat earth to QAnon, these theories can be found everywhere from social media to political rallies. Despite the seemingly outlandish nature of these theories, they continue to gain traction among many people. As researchers, we were surprised to find that conspiracy theories are still so popular today. <br/>
-				To investigate this phenomenon, we conducted a study using the transcripts of Alex Jones' Infowars podcast. Our findings shed light on the correlation between belief in conspiracy theories and a number of psychological factors, and offer insight into why these theories persist in modern society.
+				In today's world, conspiracy theories seem to be more prevalent than ever. 
+				From covid-19 denial to obama's citizenship, these theories can be found everywhere from social media to political rallies. 
+				Despite the seemingly outlandish nature of these theories, they continue to gain traction among many people.<br/>
+				This project aims to shed light on the prevalence and interconnections of various conspiracy theories that have captured public attention and sparked debate.
+				We explore the presence and portrayal of conspiracy theories in mainstream media and the Infowars podcast by Alex Jones. 				
 			</div>
 			<!--
 			<div class="row custom-padding">
@@ -56,9 +59,14 @@
 			-->
 			<img id="guyimage" src="assets/img/alex.webp" class="img-fluid"/>
 			<div class="py-5">
-				In our recent study analyzing the prevalence of conspiracy theories in popular media, we created a bar plot to showcase the frequency of conspiracy theories discussed on Alex Jones' podcasts. As a controversial figure in the media landscape, Jones has gained notoriety for promoting a variety of conspiracy theories on his show, including those related to politics, technology, and health.
-				The bar plot that we created displays the number of times each conspiracy theory was mentioned on Jones' show over a period of several months, with the most frequently discussed theories represented by the tallest bars on the plot. Through our analysis, we found that some of the most commonly discussed conspiracy theories on Jones' show include those related to government surveillance, secret societies, and the so-called "deep state."
-				Our plot offers a revealing look at the types of topics that are of most interest to Jones and his listeners, and sheds light on the ways in which conspiracy theories can spread and gain traction in the media. By better understanding the prevalence of conspiracy theories in popular media, we hope to encourage critical thinking and skepticism in our society.
+				To study conspiracy theories we pick 11 theories that play 
+				an important role in modern populist politics in the United States of America.
+				We analyze transcripts from the Inforwars podcast as well as news articles/essays from 15 mainstream media outlets 
+				from January 2016 to April 2020.<br>
+				To see the prevalence of certain conspiracy theories over time and across different media outlets hover or click 
+				on a conspiracy theory. It will show mentions of the theory over time for the selected publications.
+				To show how conspiracy theories are interconnected we implement a chord diagram that for the selected conspiracy 
+				theory, shows it's connection to other conspiracy theories.
 			</div>
 			<style>
 				.wcloud:hover { opacity: .7 !important; cursor: pointer;}
@@ -88,7 +96,7 @@
 		<div id="consp_desc" class="col-9">
 			<style>
 				#descbox {
-					height: 15em;
+					height: 8em;
 				}
 				.myborder {
 					border: 1px solid #ccc;
@@ -109,13 +117,15 @@
 				<div class="row">
 					<div id="lineplot_publications"></div>
 				</div>
-				<div class="row myborder" >
+				<div class="row myborder" id="publications_box">
 						<div id="source_selector"> </div>
 				</div>
 			</div>
 			<div id="descbox" class="py-1">
 			</div>
-			<div id="ohwow" class="custom-padding"></div>		
+			<div class="row">
+				<div id="ohwow" class="custom-padding"></div>	
+			</div>
 		</div>
 	</div>
 </div>
