@@ -70,7 +70,34 @@
 						<p class="h3">Conspiracy</p>
 					</div>
 					<div id="consp_desc" class="col-9">
+						<style>
+							#descbox {
+								height: 40%;
+							}
+							.myborder {
+								border: 1px solid #ccc;
+								position: relative;
+								border-radius: 6px;
+								padding: 10px
+							}
+							.myborder::before {
+								content: "Publications";
+								font-size: 0.8em;
+								position: absolute;
+								top: -10px;
+								padding: 0 10px;
+								background: #fff;
+							}
+						</style>
 						<div id="descbox" class="py-1">
+						</div>
+						<div id="scalethis" class="container">
+							<div class="row">
+								<div id="lineplot_publications"></div>
+							</div>
+							<div class="row myborder" >
+									<div id="source_selector"> </div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -79,7 +106,6 @@
 			<div id="barplot"></div>
 			<style>
 				#scalethis {
-				  display: flex;
 				  justify-content: center;
 				  align-items: center;
 				}
@@ -89,23 +115,14 @@
 				  max-height: 100%;
 				}
 			  </style>
-			<div class="row custom-padding">
-				<div class="col-12">
-					<div id="scalethis">
-						<div id="lineplot"></div>
-					</div>
-					<div class="row">
-						<div class="col-1">
-
-						</div>
-						<div class="col-11">
-							<div id="source_selector">
-							</div>
-						</div>
-					</div>
+			<!--<div class="row custom-padding">-->
+				<!--<div class="col-12">-->
+					<!--<div id="scalethis">-->
+						<!--<div id="lineplot"></div>-->
+					<!--</div>-->
 					
-				</div>		
-			</div>
+				<!--</div>		-->
+			<!--</div>-->
 			<div id="ohwow" class="custom-padding"></div>		
 		</div>
 	</div>
@@ -119,6 +136,18 @@ async function d3load() {
 			.then((module) => {
 				// Call the async function after import is resolved
 				module.d3drawlineplot();
+				})
+				.catch((error) => {
+				console.error('Error occurred while importing module:', error);
+				});
+		await import("./assets/js/lineplot_publications.js")
+			.then((module) => {
+				// Call the async function after import is resolved
+				for (var i = 0; i < 100; i++) {
+					module.d3drawlineplot_publications(i);
+				}
+
+				window.d3drawlineplot_publications = module.d3drawlineplot_publications;
 				})
 				.catch((error) => {
 				console.error('Error occurred while importing module:', error);

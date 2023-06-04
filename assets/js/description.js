@@ -21,7 +21,6 @@ export async function drawdescboxes(){
     var data_lineplot = await d3.csv("assets/data/timeline.csv")
     var data = await d3.json("assets/data/dataset.json");
     var column2sums  = getColumnSums(data_lineplot);
-    console.log("console2sums", column2sums);
     delete column2sums.date;
     var myWords = []
     var i = 0;
@@ -49,7 +48,6 @@ export async function drawdescboxes(){
         content.setAttribute("conspid",i);
         content.style.color = color(conspir.word.split(" "));
         content.style.cursor = "pointer";
-        console.log(conspir);
         content.innerText = conspir.word
         desc_list.append(content);
     }
@@ -57,7 +55,6 @@ export async function drawdescboxes(){
     window.wcloud_drawn = true;
 
     if(window.wcloud_drawn && window.chord_drawn && window.timeline_drawn){
-      console.log("wordcloud initdescbox");
       import("./descbox.js").then((module) => {
         // Call the async function after import is resolved
         module.initdescbox();
@@ -70,14 +67,12 @@ export async function drawdescboxes(){
     window.hover_conspbox = function(index){
         var consp_box = document.getElementById("conp_overbox");
         //consp_box.style.setProperty("border:color", color(index), "important");
-        console.log(window.id2name, parseInt(index))
         consp_box.style.borderColor = color(window.id2name[parseInt(index)].word.split(" "));
     }
 
     window.click_conspbox = function(index){
         var consp_box = document.getElementById("conp_overbox");
         //consp_box.style.setProperty("border:color", color(index), "important");
-        console.log(window.id2name, parseInt(index));
         //content.style.cssText += "border-color: " + color(conspir.word.split(" ")) + " !important;"
         consp_box.style.borderColor = color(window.id2name[parseInt(index)].word.split(" "));
     }
@@ -85,14 +80,12 @@ export async function drawdescboxes(){
     window.unclick_conspbox = function(){
         var consp_box = document.getElementById("conp_overbox");
         //consp_box.style.setProperty("border:color", color(index), "important");
-        console.log(window.id2name)
         consp_box.style.borderColor = "grey";
     }
     
     window.unhighlight_conspbox = function(){
         var consp_box = document.getElementById("conp_overbox");
         //consp_box.style.setProperty("border:color", color(index), "important");
-        console.log(window.id2name)
         consp_box.style.borderColor = "grey";
     }
 }
