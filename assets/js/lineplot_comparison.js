@@ -95,6 +95,7 @@ export async function init_lineplot_comp(){
         inp.id = "checkbox_" + src;
         inp.addEventListener("input", select_sources);
         var lbl = document.createElement("label");
+		lbl.id = "checkbox_label_" + src;
         lbl.classList.add("form-check-label");
         lbl.htmlFor = "checkbox_" + src;
         if(src == "infowars"){
@@ -104,9 +105,18 @@ export async function init_lineplot_comp(){
         }else{
             lbl.textContent = src;
         }
+        lbl.textContent = src;
+		var lbl_after = document.createElement("label");
+		lbl_after.id = "checkbox_label_after_" + src;
         newDiv.appendChild(inp);
         newDiv.appendChild(lbl);
+		lbl.appendChild(lbl_after);
         selectordiv.appendChild(newDiv);
+
+		var style = document.createElement("style");
+		var css = "#checkbox_label_"+src+" {font-weight: 200; position: relative; display: inline-block } \n    #checkbox_label_after_"+src+" { content: ''; position: absolute; left: 0; bottom: -1px; width: 100%; height: 2px; background-color: "+color(src)+"; }";
+		style.textContent = css;
+		document.body.appendChild(style);
     }
 
     choose_conspiracy();

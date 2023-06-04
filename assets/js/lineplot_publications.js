@@ -134,19 +134,19 @@ svg.append("g")
 
 
 window.highlight_source = function (x) {
-	//x = x.replace("_", " ")
 	var a = d3.select(".lineplot_pub_"+x)
 	d3.selectAll(".lineplot_pub_"+x)
 		.transition()
 		.style("opacity", "1")
-		//.style("fill", "black")
-		//.style("fill-opacity", "0.25")
+	d3.select("#checkbox_label_after_"+x)
+		.transition()
+		.style("background-color", color(x))
 }
 window.unhighlight_source = function (x) {
-	//console.log(x);
 	d3.selectAll(".lineplot_pub_"+x)
 		.transition()
 		.style("opacity", "0")
-		//.style("fill", "black")
-		//.style("fill-opacity", "0.25")
+	d3.select("#checkbox_label_after_"+x)
+		.transition()
+		.style("background-color", "white")
 }
