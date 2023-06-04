@@ -26,7 +26,6 @@ export async function init_lineplot_comp(){
     
     var data_lineplot = await d3.csv("assets/data/timeline.csv");
     var column2sums  = getColumnSums(data_lineplot);
-    console.log("console2sums", column2sums);
     delete column2sums.date;
     /*
     Need to adjust the proportions of this
@@ -43,42 +42,6 @@ export async function init_lineplot_comp(){
           myWords.push(obj);
       }
     
-    // draw the radios at the side of the lineplot
-    /*
-    <div class="form-check">
-		<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-		<label class="form-check-label" for="exampleRadios1">
-			 Default radio
-		</label>
-	</div>
-    */
-   /*
-    var radiodiv = document.getElementById("conspiracy_selector");
-    for(var i in myWords){
-        var conspir = myWords[i];
-        var newDiv = document.createElement("div");
-        newDiv.classList.add("form-check");
-        var inp = document.createElement("input");
-        inp.classList.add("form-check-input");
-        inp.type = "radio";
-        inp.name = "consp_radio";
-        inp.value = conspir.word;
-        inp.id = "radio_" + conspir.word;
-        var lbl = document.createElement("label");
-        lbl.classList.add("form-check-label");
-        lbl.htmlFor = "radio_" + conspir.word;
-        lbl.textContent = conspir.word;
-        newDiv.appendChild(inp);
-        newDiv.appendChild(lbl);
-        radiodiv.appendChild(newDiv);
-    }
-    */
-    /*
-    <div class="form-check form-check-inline">
-		<input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
-		<label class="form-check-label" for="inlineCheckbox3">3 (disabled)</label>
-	 </div>    
-    */
     // draw selector buttons at the bottom
 		var sources = ["infowars", "axios", "cnbc", "cnn", "economist", "mashable", "politico", "reuters", "techcrunch", "the hill", "the new york times", "the verge", "vice", "vox", "washington post", "wired"]
 
