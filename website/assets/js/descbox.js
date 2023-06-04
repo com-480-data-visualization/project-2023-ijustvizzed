@@ -6,7 +6,10 @@ export async function initdescbox(){
     descbox.innerHTML = defaultdescp;
 
     var elements = document.querySelectorAll('.consp');
-    
+
+    document.getElementById("checkbox_washington_post").checked = true;
+		document.getElementById("checkbox_cnbc").checked = true;
+	  window.select_sources();
     
 /*
 TODO: Update this and use the actual dataset

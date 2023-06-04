@@ -63,45 +63,6 @@
 			<style>
 				.wcloud:hover { opacity: .7 !important; cursor: pointer;}
 			</style>
-			<div id="conspiracies">
-				<p class="h2"><u>Conspiracies:</u></p>
-				<div id="conp_overbox" class="row custom-padding border border-4 rounded" style="border-color:grey !important;">
-					<div id="consp_name" class="col-3">
-						<p class="h3">Conspiracy</p>
-					</div>
-					<div id="consp_desc" class="col-9">
-						<style>
-							#descbox {
-								height: 20%;
-							}
-							.myborder {
-								border: 1px solid #ccc;
-								position: relative;
-								border-radius: 6px;
-								padding: 10px
-							}
-							.myborder::before {
-								content: "Publications";
-								font-size: 0.8em;
-								position: absolute;
-								top: -10px;
-								padding: 0 10px;
-								background: #fff;
-							}
-						</style>
-						<div id="scalethis" class="container">
-							<div class="row">
-								<div id="lineplot_publications"></div>
-							</div>
-							<div class="row myborder" >
-									<div id="source_selector"> </div>
-							</div>
-						</div>
-						<div id="descbox" class="py-1">
-						</div>
-					</div>
-				</div>
-			</div>
 			<!-- <div id="conspwcloud"></div> -->
 			<div id="barplot"></div>
 			<style>
@@ -115,14 +76,46 @@
 				  max-height: 100%;
 				}
 			  </style>
-			<!--<div class="row custom-padding">-->
-				<!--<div class="col-12">-->
-					<!--<div id="scalethis">-->
-						<!--<div id="lineplot"></div>-->
-					<!--</div>-->
-					
-				<!--</div>		-->
-			<!--</div>-->
+		</div>
+	</div>
+</div>
+
+<div id="conspiracies" class="px-5">
+	<p class="h2"><u>Conspiracies:</u></p>
+	<div id="conp_overbox" class="row custom-padding border border-4 rounded" style="border-color:grey !important;">
+		<div id="consp_name" class="col-3">
+			<p class="h3">Conspiracy</p>
+		</div>
+		<div id="consp_desc" class="col-9">
+			<style>
+				#descbox {
+					height: 15em;
+				}
+				.myborder {
+					border: 1px solid #ccc;
+					position: relative;
+					border-radius: 6px;
+					padding: 10px
+				}
+				.myborder::before {
+					content: "Publications";
+					font-size: 0.8em;
+					position: absolute;
+					top: -10px;
+					padding: 0 10px;
+					background: #fff;
+				}
+			</style>
+			<div id="scalethis" class="container">
+				<div class="row">
+					<div id="lineplot_publications"></div>
+				</div>
+				<div class="row myborder" >
+						<div id="source_selector"> </div>
+				</div>
+			</div>
+			<div id="descbox" class="py-1">
+			</div>
 			<div id="ohwow" class="custom-padding"></div>		
 		</div>
 	</div>
@@ -205,7 +198,7 @@ async function d3load() {
             var type = data['labels'][x].join(" ");
             document.getElementById("lineplotsvg_pub_"+type.replaceAll(" ", "_")).style.display = "none";
         }
-        var type = data['labels'][0].join(" ");
+        var type = data['labels'][11].join(" ");
       document.getElementById("lineplotsvg_pub_"+type.replaceAll(" ", "_")).style.display = "block";
 })();
 
