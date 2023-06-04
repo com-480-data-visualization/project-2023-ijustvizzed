@@ -36,10 +36,10 @@ export async function drawdescboxes(){
 	}
 
 		function colorize(index) {
-			var type = data['labels'][index].join(" ");
 			for (var x in data['labels']) {
 				var p = d3.select("#consp_name p:nth-child("+((x|0)+1)+")")
 				if (x == (index|0)) {
+					var type = data['labels'][index].join(" ");
 					p.transition()
 						.duration(100)
 						.style("color", color(type.split(" ")))
@@ -69,10 +69,12 @@ export async function drawdescboxes(){
     window.unclick_conspbox = function(){
         var consp_box = document.getElementById("conp_overbox");
         consp_box.style.borderColor = "grey";
+				colorize(20);
     }
     
     window.unhighlight_conspbox = function(){
         var consp_box = document.getElementById("conp_overbox");
         consp_box.style.borderColor = "grey";
+				colorize(20);
     }
 }

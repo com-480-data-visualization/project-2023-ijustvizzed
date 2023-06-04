@@ -3,6 +3,7 @@ export async function d3drawlineplot_publications(type){
 	type = data['labels'][type].join(" ");
 
 var publications = [
+["infowars"],
 ["axios"],
 ["business insider"],
 ["buzzfeed news"],
@@ -60,6 +61,8 @@ var svg = d3.select("#lineplot_publications")
 		.attr("transform", `translate(${margin.left},${margin.top})`);
 
 var data_lineplot = await d3.csv("assets/data/timeline_pub_"+type+".csv")
+console.log(type, data_lineplot);
+
 
 var timedata = data_lineplot.map(function(d) { 
 	var dict = {}
