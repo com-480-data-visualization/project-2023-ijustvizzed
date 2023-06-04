@@ -80,7 +80,8 @@ export async function init_lineplot_comp(){
 	 </div>    
     */
     // draw selector buttons at the bottom
-    var sources = ["Alex Jones", "Fox News", "CNN"]
+		var sources = ["axios", "cnbc", "cnn", "economist", "mashable", "politico", "reuters", "techcrunch", "the hill", "the new york times", "the verge", "vice", "vox", "washington post", "wired"]
+
     var selectordiv = document.getElementById("source_selector");
     for(var i in sources){
         var src = sources[i];
@@ -90,6 +91,7 @@ export async function init_lineplot_comp(){
         var inp = document.createElement("input");
         inp.classList.add("form-check-input");
         inp.type = "checkbox";
+				src = src.replaceAll(" ", "_")
         inp.id = "checkbox_" + src;
         inp.addEventListener("input", select_sources);
         var lbl = document.createElement("label");
@@ -117,6 +119,7 @@ export async function init_lineplot_comp(){
     function select_sources(){
         // unhighlihgt all timelines
         for(var i in sources){
+						src = sources[i].replaceAll(" ", "_")
             var sel = document.getElementById("checkbox_" + src);
             if(sel.checked){
                 // highlight the line on the thingy => @Luca need a function in window that highlights/unhighlights a timeline

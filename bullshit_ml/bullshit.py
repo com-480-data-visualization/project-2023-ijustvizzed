@@ -20,10 +20,9 @@ obama
 kamala harris
 moon landing
 coronavirus
-new holocaust
 stop the steal
-communist chinese
 sandy hook
+china
 """.strip().split("\n")))
 
 # antichrist

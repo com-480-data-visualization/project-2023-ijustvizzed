@@ -7,9 +7,7 @@ export async function initdescbox(){
 
     var elements = document.querySelectorAll('.consp');
     
-    console.log("descbox:", elements);
     
-    console.log(window.wcloud_drawn, window.chord_drawn, window.timeline_drawn);
 /*
 TODO: Update this and use the actual dataset
 */
@@ -23,7 +21,6 @@ var consp_desc = {
 }
 
     
-    console.log("initdescbox", window);
     
     elements.forEach(function(element) {
       element.addEventListener('mouseover', handleMouseOver);
@@ -33,10 +30,8 @@ var consp_desc = {
     
     window.onclick = function(event) {
         var targetElement = event.target;
-        console.log('Clicked element:', targetElement);
         
         var consp_id = targetElement.attributes.conspid;
-        console.log('Window clicked', consp_id);
         // Perform your desired actions here
         if(typeof consp_id === 'undefined'){
             window.fixed = false;
@@ -52,13 +47,16 @@ var consp_desc = {
         var consp_id = event.target.attributes.conspid.value;
         if(!window.fixed){
             var consp_id = event.target.attributes.conspid.value;
-            console.log(event.target.attributes);
-            console.log(consp_id);
-            console.log(consp_desc[consp_id]);
             descbox.innerHTML = consp_desc[consp_id];
             window.hover_chord(consp_id);
             window.hover_lineplot(consp_id);
             window.hover_conspbox(consp_id);
+					  for (var x in data['labels']) {
+							var type = data['labels'][x].join(" ");
+							document.getElementById("lineplotsvg_pub_"+type.replaceAll(" ", "_")).style.display = "none";
+						}
+						var type = data['labels'][consp_id].join(" ");
+					  document.getElementById("lineplotsvg_pub_"+type.replaceAll(" ", "_")).style.display = "block";
         }
     }
     function handleMouseOut(event) {
@@ -72,9 +70,6 @@ var consp_desc = {
     function handleClick(event) {
         window.fixed = true;
         var consp_id = event.target.attributes.conspid.value;
-        console.log(event.target.attributes);
-        console.log(consp_id);
-        console.log(consp_desc[consp_id]);
         descbox.innerHTML = consp_desc[consp_id];
         window.hover_chord(consp_id);
         window.hover_lineplot(consp_id);

@@ -1,5 +1,34 @@
-export async function d3drawlineplot(){
-// set the dimensions and margins of the graph
+export async function d3drawlineplot_publications(type){
+	if (type >= data['labels'].length) {return};
+	type = data['labels'][type].join(" ");
+
+var publications = [
+["axios"],
+["business insider"],
+["buzzfeed news"],
+["cnbc"],
+["cnn"],
+["economist"],
+["fox news"],
+["gizmodo"],
+["hyperallergic"],
+["mashable"],
+["new","republic"],
+["new","yorker"],
+["people"],
+["politico"],
+["refinery","29"],
+["reuters"],
+["tmz"],
+["techcrunch"],
+["the","hill"],
+["the","new","york","times"],
+["the","verge"],
+["vice"],
+["vice","news"],
+["vox"],
+["washington","post"],
+["wired"]]
 
 var container = document.getElementById('scalethis');
 			
@@ -19,37 +48,38 @@ width = svgWidth - margin.left - margin.right,
 height = svgHeight - margin.top - margin.bottom;
 
 // remove all previous data
-d3.select("#lineplot").html(null);
+//d3.select("#lineplot_publications").html(null);
 // append the svg object to the body of the page
-var svg = d3.select("#lineplot")
+var svg = d3.select("#lineplot_publications")
 	.append("svg")
-		.attr("id", "lineplotsvg")
+		.attr("id", "lineplotsvg_pub_"+type.replaceAll(" ", "_"))
+		.style("display", "none")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
 	.append("g")
 		.attr("transform", `translate(${margin.left},${margin.top})`);
 
-var data_lineplot = await d3.csv("assets/data/timeline.csv")
+var data_lineplot = await d3.csv("assets/data/timeline_pub_"+type+".csv")
 
 var timedata = data_lineplot.map(function(d) { 
 	var dict = {}
 	dict["date"] = d3.timeParse("%Y-%m")(d.date);
-	data["labels"].forEach(x => {dict[x.join(" ")] = d[x.join(" ")]});
+	publications.forEach(x => {dict[x.join(" ")] = d[x.join(" ")]});
 	return dict;
 })
 
 svg.append("text")
-    .attr("class", "y label")
-    .attr("text-anchor", "end")
-    .attr("y", 3)
-    .attr("dy", "-4.5em")
+		.attr("class", "y label")
+		.attr("text-anchor", "end")
+		.attr("y", 3)
+		.attr("dy", "-4.5em")
 		.attr("dx", "-5em")
 		.style("font-size","60%")
-    .attr("transform", "rotate(-90)")
-    .text("popularity %");
+		.attr("transform", "rotate(-90)")
+		.text("popularity %");
 
 var max_y = 0
-data["labels"].forEach(label => {
+publications.forEach(label => {
 	max_y = Math.max(max_y, d3.max(timedata, function(d) { return +d[label.join(" ")]; }))
 })
 
@@ -64,14 +94,14 @@ var y = d3.scaleLinear()
 	.range([ height, 0 ]);
 
 // Add the line
-data["labels"].forEach((label, i) => {
+publications.forEach((label, i) => {
 	svg.append("path")
 		.datum(timedata)
 		.attr("fill", "none")
 		.attr("stroke", color(label))
 		.attr("stroke-width", 1.5)
-		.attr("class", "lineplot"+i)
-		.attr("opacity", "0.2")
+		.attr("class", "lineplot_pub_"+label.join("_"))
+		.attr("opacity", "0")
 		.attr("d", d3.line()
 			.x(function(d) { return x(d["date"]) })
 			.y(function(d) { 
@@ -89,7 +119,7 @@ svg.append("g")
 	window.timeline_drawn = true;
 
 	if(window.wcloud_drawn && window.chord_drawn && window.timeline_drawn){
-	  import("./descbox.js").then((module) => {
+		import("./descbox.js").then((module) => {
 		// Call the async function after import is resolved
 		module.initdescbox();
 		})
@@ -97,22 +127,23 @@ svg.append("g")
 		console.error('Error occurred while importing module:', error);
 		});
 	}
+}
 
-window.hover_lineplot = function(index) {
-	svg = d3.select("#chord_diagram")
-	d3.select("#lineplot").selectAll("path")
-		.transition()
-		.style("opacity", "0.2")
-	d3.select("#lineplot").selectAll(".lineplot"+index)
+
+window.highlight_source = function (x) {
+	//x = x.replace("_", " ")
+	var a = d3.select(".lineplot_pub_"+x)
+	d3.selectAll(".lineplot_pub_"+x)
 		.transition()
 		.style("opacity", "1")
+		//.style("fill", "black")
+		//.style("fill-opacity", "0.25")
 }
-
-window.unhighlight_lineplot = function(index) {
-	svg = d3.select("#chord_diagram")
-	d3.select("#lineplot").selectAll("path")
+window.unhighlight_source = function (x) {
+	//console.log(x);
+	d3.selectAll(".lineplot_pub_"+x)
 		.transition()
-		.style("opacity", "0.2")
-}
-
+		.style("opacity", "0")
+		//.style("fill", "black")
+		//.style("fill-opacity", "0.25")
 }
