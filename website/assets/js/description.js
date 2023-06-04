@@ -1,54 +1,22 @@
 export async function drawdescboxes(){
 
-    function getColumnSums(csvData) {
-        var columnSums = {};
-    
-        // Get the column names from the first row of the CSV data
-        var columnNames = Object.keys(csvData[0]);
-    
-        // Calculate the sum for each column
-        columnNames.forEach(function(columnName) {
-              var values = csvData.map(function(d) {
-                  return +d[columnName];
-                });
-          var sum = d3.sum(values);
-          columnSums[columnName] = sum;
-        });
-    
-        return columnSums;
-      }
-
-    var data_lineplot = await d3.csv("assets/data/timeline.csv")
     var data = await d3.json("assets/data/dataset.json");
-    var column2sums  = getColumnSums(data_lineplot);
-    delete column2sums.date;
-    var myWords = []
-    var i = 0;
-    for (var key in column2sums) {
-        var obj = {};
-        obj["word"] = key;
-        obj["size"] = column2sums[key];
-        obj["id"] = i;
-        i = i+1;
-        myWords.push(obj);
-    }
-    window.id2name = myWords;
     var desc_list = document.getElementById("consp_name");
-    var overbox = document.getElementById("conp_overbox");
-    desc_list.innerHTML = "";
-    for (var i in myWords){
-        var conspir = myWords[i];
+    window.id2name = [];
+    for (var x in data['labels']) {
+        var type = data['labels'][x].join(" ");
+        window.id2name.push(type);
         var content = document.createElement("p");
         content.classList.add("h4");
         content.classList.add("consp");
-        content.classList.add("border-bottom")
-        if(i == 0){
-            content.classList.add("py-1")
+        content.classList.add("border-bottom");
+        if(x == 0){
+            content.classList.add("py-1");
         }
-        content.setAttribute("conspid",i);
-        content.style.color = color(conspir.word.split(" "));
+        content.setAttribute("conspid",x);
+        content.style.color = color(type.split(" "));
         content.style.cursor = "pointer";
-        content.innerText = conspir.word
+        content.innerText = type;
         desc_list.append(content);
     }
     
@@ -67,14 +35,15 @@ export async function drawdescboxes(){
     window.hover_conspbox = function(index){
         var consp_box = document.getElementById("conp_overbox");
         //consp_box.style.setProperty("border:color", color(index), "important");
-        consp_box.style.borderColor = color(window.id2name[parseInt(index)].word.split(" "));
+        consp_box.style.borderColor = color(window.id2name[parseInt(index)].split(" "));
     }
 
     window.click_conspbox = function(index){
         var consp_box = document.getElementById("conp_overbox");
+        console.log(consp_box.style);
         //consp_box.style.setProperty("border:color", color(index), "important");
         //content.style.cssText += "border-color: " + color(conspir.word.split(" ")) + " !important;"
-        consp_box.style.borderColor = color(window.id2name[parseInt(index)].word.split(" "));
+        consp_box.style.borderColor = color(window.id2name[parseInt(index)].split(" "));
     }
 
     window.unclick_conspbox = function(){
