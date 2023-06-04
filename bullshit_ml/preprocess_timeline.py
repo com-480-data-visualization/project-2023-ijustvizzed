@@ -57,7 +57,7 @@ for f in sorted(os.listdir("../infowars-main")):
         the = " ".join(theory)
         with open("../infowars-main/" + f, "r") as file:
             count = file.read().count(the)
-        data_pub[the][date_string]["infowars"] += count
+        data_pub[the][date_string]["infowars"] += count / 2
         normalizations["infowars"] += 1
 
 

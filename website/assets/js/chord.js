@@ -73,7 +73,7 @@ svg.append("g")
 
 svg.append("g")
 		.attr("font-family", "sans-serif")
-		.attr("font-size", 15)
+		.attr("font-size", 20)
 	.selectAll("g")
 	.data(chords.groups)
 	.join("g")

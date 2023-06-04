@@ -54,13 +54,13 @@ export async function drawdescboxes(){
 		}
 
     window.hover_conspbox = function(index){
-        var consp_box = document.getElementById("conp_overbox");
+        var consp_box = document.getElementById("descbox");
         consp_box.style.borderColor = color(window.id2name[parseInt(index)].split(" "));
 				colorize(index);
     }
 
     window.click_conspbox = function(index){
-        var consp_box = document.getElementById("conp_overbox");
+        var consp_box = document.getElementById("descbox");
         console.log(consp_box.style);
         consp_box.style.borderColor = color(window.id2name[parseInt(index)].split(" "));
 				colorize(index);
