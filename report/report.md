@@ -196,6 +196,15 @@ conspiracy theorists.
 
 ## Visualizations
 
+While we acknowledge that using certain development frameworks for Javascript
+code can speed up development, we nevertheless decided to resort to [vanilla
+Javascript](http://vanilla-js.com/) without leveraging additional
+functionalities provided by libraries and frameworks such as JQuery or
+React.js.
+We took this decision for multiple reasons, among others to prevent dependency
+conflicts, maintain high performance and a lightweight code base as well as
+preventing issues with browser support.
+
 ### Line Plots (Popularity of Conspiracy Theories Over Time)
 
 The line plots are created using D3.js' line plotting functionality, with the
@@ -252,6 +261,28 @@ with an interesting relations to chemtrails as well.
 ![The chord chart with the _coronavirus_ complex highlighted](assets/chord.png){#fig:chord}
 
 # Peer Assessment
+
+Throughout the duration of the project, the workload was distributed uniformly
+across the team members.
+Nevertheless, each team member contributed mainly to a certain part of our
+visualization.
+
+_Florian Hofhammer_ contributed to dataset collection and preprocessing.
+The latter was joint effort with _Luca Di Bartolomeo_.
+_Florian Hofhammer_ also was responsible for the initial setup of the project,
+the development environment and automated deployment of the website as well as
+most of the documentation throughout the project.
+
+_Luca Di Bartolomeo_ created the first draft of the website and focused mostly
+on the Word2Vec data processing due to his previous experience in this area.
+In addition, he was responsible for the implementation of the chord chart and
+general bug fixing in the Javascript code.
+
+_Philipp Mao_ took care of the implementation of the timelines and general
+website design tasks.
+He spent significant efforts in the responsiveness of the website and automatic
+updates and transitions between different selected elements.
+He also took care of writing a script for the screencast.
 
 # Conclusion
 

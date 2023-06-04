@@ -4,12 +4,29 @@
 | ------------------ | ------ |
 | Philipp Mao        | 354420 |
 | Florian Hofhammer  | 339295 |
-| Luca Di Bartolomeo |        |
+| Luca Di Bartolomeo | 298831 |
 
 [Milestone 1](#milestone-1) • [Milestone 2](#milestone-2) • [Milestone 3](#milestone-3)
 
-## Milestone 1 (23rd April, 5pm)
+## Setup
 
+### Development Setup
+
+For development purposes, hosting the website with a webserver and visiting
+the page locally is sufficient, e.g., by using the provided [Dockerfile](./Dockerfile).
+Our preprocessing scripts require certain prerequisites that can be installed
+with `pip` via the corresponding [requirements file](./bullshit_ml/requirements.txt).
+
+### Deployment
+
+Our visualization is automatically deployed to GitHub pages via the GitHub Actions
+CI.
+The up-to-date version of our visualization can consequently always be found at
+<https://com-480-data-visualization.github.io/project-2023-ijustvizzed/>.
+
+## Milestone 1
+
+Due: 23rd April, 5pm  
 **10% of the final grade**
 
 This is a preliminary milestone to let you set up goals for your final project and assess the feasibility of your ideas.
@@ -70,8 +87,9 @@ To the best of our knowledge, previous analysis has not focussed on data visuali
 
 Additionally, we are the first project that uses the relatively new Alex Jones’ InfoWars dataset [released on 22 March 2023](https://www.reddit.com/r/datasets/comments/11yyoth/4682_episodes_of_the_alex_jones_show_15875_hours/) and correlates this with Trump’s tweets.
 
-## Milestone 2 (7th May, 5pm)
+## Milestone 2
 
+Due: 7th May, 5pm  
 **10% of the final grade**
 
 ### Project Goal
@@ -193,9 +211,15 @@ For the purposes described above, the upcoming lecture on graph visualization
 will also come in useful and provide us with more insights on how to nicely
 visualize graphs (here: graphs of words/topics).
 
-## Milestone 3 (4th June, 5pm)
+## Milestone 3
 
+Due: 4th June, 5pm  
 **80% of the final grade**
+
+Please refer to our [report][report] for details on the dataset, design and
+implementation of our project.
+
+The screencast for milestone 3 is available at TODO.
 
 
 ## Late policy
@@ -203,3 +227,4 @@ visualize graphs (here: graphs of words/topics).
 - < 24h: 80% of the grade for the milestone
 - < 48h: 70% of the grade for the milestone
 
+[report]: https://github.com/com-480-data-visualization/project-2023-ijustvizzed/blob/master/report/report.pdf
