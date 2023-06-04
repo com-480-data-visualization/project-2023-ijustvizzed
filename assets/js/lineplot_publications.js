@@ -36,7 +36,7 @@ var container = document.getElementById('scalethis');
 var containerWidth = container.getBoundingClientRect().width;
 			
 var svgWidth = 1300;
-var svgHeight = 400;
+var svgHeight = 300;
 			
 var scale = containerWidth / svgWidth;
 					
@@ -44,7 +44,7 @@ var scale = containerWidth / svgWidth;
 svgWidth =  svgWidth * scale;
 svgHeight = svgHeight * scale
 
-var margin = {top: 20, right: 30, bottom: 40, left: 90},
+var margin = {top: 0, right: 0, bottom: 0, left: 50},
 width = svgWidth - margin.left - margin.right,
 height = svgHeight - margin.top - margin.bottom;
 
@@ -55,8 +55,7 @@ var svg = d3.select("#lineplot_publications")
 	.append("svg")
 		.attr("id", "lineplotsvg_pub_"+type.replaceAll(" ", "_"))
 		.style("display", "none")
-		.attr("width", width + margin.left + margin.right)
-		.attr("height", height + margin.top + margin.bottom)
+		.attr("viewBox", [0, -10, width + 60, height + 50])
 	.append("g")
 		.attr("transform", `translate(${margin.left},${margin.top})`);
 
@@ -76,7 +75,7 @@ svg.append("text")
 		.attr("text-anchor", "end")
 		.attr("y", 3)
 		.attr("dy", "-4.5em")
-		.attr("dx", "-5em")
+		.attr("dx", "-10em")
 		.style("font-size","60%")
 		.attr("transform", "rotate(-90)")
 		.text("popularity %");
