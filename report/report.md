@@ -119,6 +119,88 @@ and focus on the timelines and chord charts instead.
 
 # Implementing the Visualization
 
+As we already referred to in the previous sections, we encountered multiple
+difficulties during the implementation of our visualization.
+In this section, we describe the steps we took, what difficulties we
+encountered, as well as how we have overcome those difficulties and what the
+effect on our implementation is.
+
+As already mentioned above, the Trump Tweets dataset was too sparse for our
+visualization which is why we will not extensively cover the processing steps
+for this dataset in the following.
+
+## Data Preprocessing
+
+The different datasets require different preprocessing steps, depending on
+their format.
+
+The Infowars dataset consists of raw text files with one file per episode.
+The filename encodes the date of the podcast episode, the file itself contains
+the raw transcription of the corresponding episode.
+
+For training the Word2Vec model which we use for establishing links between
+the conspiracy theories, we simply concatenate the full transcription and train
+the model on this full text dataset.
+
+The news dataset contains news articles for 27 US-American media outlets and
+news agencies in the CSV format.
+Each row in the corresponding CSV file contains the publication date of the
+article, the article itself, and the publisher, among other metadata such as
+a link to the online article.
+This dataset required preprocessing due to formatting errors in the CSV.
+In some but not all cases, newlines in the article contents caused newlines in
+the CSV, breaking the format and preventing successful parsing.
+In one of our preprocessing steps, we automatically fix those formatting errors
+for further processing.
+
+## Data Analysis
+
+After training a Word2Vec model and fixing formatting issues in our dataset, we
+analyze the data and extract the information for our visualization.
+
+In order to show the connection between certain conspiracy theories in a chord
+chart, we calculate the cosine similarity between terms identifying the
+theories based on our previously trained Word2Vec model.
+As an example, the conspiracy theory around the _New World Order_[^nwo] shows
+strong links to the _Illuminati_[^illuminati] and _George Soros_[^soros] in our
+analysis, which is in line with the conspiracy theory's main message that a
+secret society (here: the Illuminati) lead by rich and influential people
+(here: George Soros) are controlling the world via a secret world government.
+
+For showing the development over time in popularity, we count the occurrences
+of terms related to the conspiracy theories over time per media outlet
+(including Alex Jones' Infowars podcast) and plot them in a line graph per
+conspiracy theory.
+This allows us to have a direct comparison by how different topics are treated
+in different media outlets, especially with reference to the Infowars podcast.
+
+For the implementation of those line charts, we had to make certain compromises
+regarding our datasets.
+First, the news articles dataset spans from January 2016 to April 2020, whereas
+the Infowars dataset reaches back to 2001 and contains episode transcriptions
+up until the present days.
+In order to have a meaningful comparison between news reports and the Infowars
+dataset, we needed to restrict the latter to the same timespan as the former in
+the aforementioned line graphs.
+
+Second, the news dataset was too sparse for certain media outlets, which is why
+we needed to exclude those from the final plots.
+As an example, out of the 27 million news articles in the dataset, only about
+27'000 were from Fox News and these articles were not uniformly distributed
+over time but strongly concentrated around a few dates.
+We can therefore not achieve enough statistical significance over the full time
+span to meaningfully show data for Fox News.
+Especially for this media outlet, the corresponding graphs would have been very
+interesting to analyze due to its known closeness to right-wing politicians and
+conspiracy theorists.
+
+
+
+
+
+
+
+
 An example for code blocks:
 
 ~~~{#lst:test .bash .numberLines caption="test"}
@@ -131,3 +213,9 @@ References work like this: [@Lst:test]
 # Peer Assessment
 
 # References
+
+
+
+[^nwo]: <https://en.wikipedia.org/wiki/New_World_Order_(conspiracy_theory)>
+[^illuminati]: <https://en.wikipedia.org/wiki/Illuminati>
+[^soros]:<https://en.wikipedia.org/wiki/George_Soros_conspiracy_theories>
