@@ -40,7 +40,6 @@ var svgHeight = 300;
 			
 var scale = containerWidth / svgWidth;
 					
-//console.log("scaling", containerWidth, svgWidth, scale);
 svgWidth =  svgWidth * scale;
 svgHeight = svgHeight * scale
 
@@ -60,7 +59,6 @@ var svg = d3.select("#lineplot_publications")
 		.attr("transform", `translate(${margin.left},${margin.top})`);
 
 var data_lineplot = await d3.csv("assets/data/timeline_pub_"+type+".csv")
-console.log(type, data_lineplot);
 
 
 var timedata = data_lineplot.map(function(d) { 

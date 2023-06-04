@@ -7,9 +7,6 @@ export async function initdescbox(){
 
     var elements = document.querySelectorAll('.consp');
     
-/*
-TODO: Update this and use the actual dataset
-*/
 var consp_desc = {
 	"0": "<p>The <em>Chemtrails</em> conspiracy theory falsely claims that the trails left behind by airplanes are deliberate chemical sprays used for undisclosed purposes, despite scientific consensus that they are simply contrails, composed of water vapor.<br>More information: <a href=\"https://en.wikipedia.org/wiki/Chemtrail_conspiracy_theory\" class=\"uri\">Wikipedia</a></p>",
 	"1": "<p>The <em>Illuminati</em> conspiracy theory asserts that a secret society, often believed to consist of influential individuals, controls world events and manipulates governments and economies for their own agenda, despite no credible evidence supporting its existence.<br>More information: <a href=\"https://en.wikipedia.org/wiki/Illuminati\" class=\"uri\">Wikipedia</a></p>",
@@ -34,21 +31,18 @@ var consp_desc = {
     
     window.onclick = function(event) {
         var targetElement = event.target;
-        
         var consp_id = targetElement.attributes.conspid;
         var id = targetElement.id;
         console.log(id);
         if(id == 'source_selector' || id == 'publications_box' || id.includes('checkbox')){
             return;
         }
-        // Perform your desired actions here
         if(typeof consp_id === 'undefined'){
             window.fixed = false;
             descbox.innerHTML = defaultdescp;
             window.unhighlight_lineplot();
             window.unhighlight_chord();
             window.unclick_conspbox();
-            // window.unshow_comp_lineplot();
         }
       };
 
@@ -61,12 +55,12 @@ var consp_desc = {
             window.hover_chord(consp_id);
             window.hover_lineplot(consp_id);
             window.hover_conspbox(consp_id);
-					  for (var x in data['labels']) {
-							var type = data['labels'][x].join(" ");
-							document.getElementById("lineplotsvg_pub_"+type.replaceAll(" ", "_")).style.display = "none";
-						}
-						var type = data['labels'][consp_id].join(" ");
-					  document.getElementById("lineplotsvg_pub_"+type.replaceAll(" ", "_")).style.display = "block";
+			for (var x in data['labels']) {
+				var type = data['labels'][x].join(" ");
+				document.getElementById("lineplotsvg_pub_"+type.replaceAll(" ", "_")).style.display = "none";
+			}
+		    var type = data['labels'][consp_id].join(" ");
+			document.getElementById("lineplotsvg_pub_"+type.replaceAll(" ", "_")).style.display = "block";
         }
     }
     function handleMouseOut(event) {
@@ -75,7 +69,6 @@ var consp_desc = {
             window.unhighlight_lineplot();
             window.unhighlight_chord();
             window.unhighlight_conspbox();
-            // window.unshow_comp_lineplot(consp_id);
         }
     }
     function handleClick(event) {
@@ -90,26 +83,25 @@ var consp_desc = {
             document.getElementById("lineplotsvg_pub_"+type.replaceAll(" ", "_")).style.display = "none";
         }
         var type = data['labels'][consp_id].join(" ");
-      document.getElementById("lineplotsvg_pub_"+type.replaceAll(" ", "_")).style.display = "block";
-        // window.show_comp_lineplot(consp_id);
+        document.getElementById("lineplotsvg_pub_"+type.replaceAll(" ", "_")).style.display = "block";
     }
 
-    // highglight a conspiracy in the begging
+    // highglight a conspiracy in the beginning
     document.getElementById("checkbox_" + "cnn").checked = true
     document.getElementById("checkbox_" + "infowars").checked = true
     document.getElementById("checkbox_" + "vice").checked = true
     var consp_id = 0;
     descbox.innerHTML = defaultdescp;
-            window.hover_chord(consp_id);
-            window.hover_lineplot(consp_id);
-            window.hover_conspbox(consp_id);
-					  for (var x in data['labels']) {
-							var type = data['labels'][x].join(" ");
-							document.getElementById("lineplotsvg_pub_"+type.replaceAll(" ", "_")).style.display = "none";
-						}
-						var type = data['labels'][consp_id].join(" ");
-					  document.getElementById("lineplotsvg_pub_"+type.replaceAll(" ", "_")).style.display = "block";
-                      window.select_sources();
+    window.hover_chord(consp_id);
+    window.hover_lineplot(consp_id);
+    window.hover_conspbox(consp_id);
+	for (var x in data['labels']) {
+		var type = data['labels'][x].join(" ");
+		document.getElementById("lineplotsvg_pub_"+type.replaceAll(" ", "_")).style.display = "none";
+	}
+	var type = data['labels'][consp_id].join(" ");
+	document.getElementById("lineplotsvg_pub_"+type.replaceAll(" ", "_")).style.display = "block";
+    window.select_sources();
 }
 
 

@@ -10,7 +10,6 @@ var svgHeight = 400;
 			
 var scale = containerWidth / svgWidth;
 					
-//console.log("scaling", containerWidth, svgWidth, scale);
 svgWidth =  svgWidth * scale;
 svgHeight = svgHeight * scale
 

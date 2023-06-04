@@ -4,7 +4,6 @@ export async function d3drawwordcloud(type){
   var data = await d3.json("assets/data/dataset.json");
 
   console.log("data_lineplot", data_lineplot);
-  console.log(data);
 
   function sumColumn(csvData, columnName) {
       var values = csvData.map(function(d) {
