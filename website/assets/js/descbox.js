@@ -7,9 +7,7 @@ export async function initdescbox(){
 
     var elements = document.querySelectorAll('.consp');
 
-    document.getElementById("checkbox_washington_post").checked = true;
-		document.getElementById("checkbox_cnbc").checked = true;
-	  window.select_sources();
+    
     
 /*
 TODO: Update this and use the actual dataset
@@ -23,7 +21,10 @@ var consp_desc = {
     "5": "<p>Conspiracy theories around <em>Obama</em> include false claims such as his alleged birthplace being outside the United States, his secret Muslim identity, and accusations of him orchestrating various nefarious agendas during his presidency, which lack credible evidence.</p>\n<p>More information: <a href=\"https://en.wikipedia.org/wiki/Category:Conspiracy_theories_regarding_Barack_Obama\" class=\"uri\">https://en.wikipedia.org/wiki/Category:Conspiracy_theories_regarding_Barack_Obama</a></p>",
     "6": "<p>Conspiracy theories around <em>Kamala Harris</em> include unfounded claims such as her alleged ineligibility for the Vice Presidency due to her parent's immigration status, false connections to globalist agendas, and baseless accusations of involvement in deep state activities or radical left-wing ideologies.</p>\n<p>More information: <a href=\"https://www.bbc.com/news/53826816\" class=\"uri\">https://www.bbc.com/news/53826816</a></p>",
     "7": "<p>Conspiracy theories around the <em>moon landing</em> falsely assert that the Apollo moon landings were staged or faked by the United States government, despite overwhelming evidence confirming their authenticity and scientific achievement.</p>\n<p>More information: <a href=\"https://en.wikipedia.org/wiki/Moon_landing_conspiracy_theories\" class=\"uri\">https://en.wikipedia.org/wiki/Moon_landing_conspiracy_theories</a></p>",
-    "8": "<p>Conspiracy theories around the <em>coronavirus</em> include unfounded claims such as the virus being intentionally created as a bioweapon, 5G technology causing the spread of the virus, or it being a hoax or exaggerated threat, despite scientific consensus and evidence pointing to its natural origins and the severity of the global pandemic.</p>\n<p>More information: <a href=\"https://en.wikipedia.org/wiki/COVID-19_misinformation\" class=\"uri\">https://en.wikipedia.org/wiki/COVID-19_misinformation</a></p>"
+    "8": "<p>Conspiracy theories around the <em>coronavirus</em> include unfounded claims such as the virus being intentionally created as a bioweapon, 5G technology causing the spread of the virus, or it being a hoax or exaggerated threat, despite scientific consensus and evidence pointing to its natural origins and the severity of the global pandemic.</p>\n<p>More information: <a href=\"https://en.wikipedia.org/wiki/COVID-19_misinformation\" class=\"uri\">https://en.wikipedia.org/wiki/COVID-19_misinformation</a></p>",
+    "9": "<p>The <em>Stop the Steal</em> conspiracy theory falsely alleges widespread voter fraud and a coordinated effort to steal the 2020 U.S. Presidential election from Donald Trump, despite multiple courts, election officials, and independent investigations affirming the legitimacy and integrity of the election results.</p>\n<p>More information: <a href=\"https://en.wikipedia.org/wiki/Attempts_to_overturn_the_2020_United_States_presidential_election\" class=\"uri\">https://en.wikipedia.org/wiki/Attempts_to_overturn_the_2020_United_States_presidential_election</a></p>",
+    "10": "<p><em>Sandy Hook</em> conspiracy theories falsely claim that the 2012 mass shooting at Sandy Hook Elementary School in Connecticut was a staged event or a government-led hoax, despite overwhelming evidence and official investigations confirming the tragedy and the loss of innocent lives.</p>\n<p>More information: <a href=\"https://en.wikipedia.org/wiki/Sandy_Hook_Elementary_School_shooting_conspiracy_theories\" class=\"uri\">https://en.wikipedia.org/wiki/Sandy_Hook_Elementary_School_shooting_conspiracy_theories</a></p>",
+    "11": "<p><em>China</em> conspiracy theories range from allegations of Chinese government espionage, global influence, and involvement in biological warfare, among other unfounded claims, which lack credible evidence and often perpetuate xenophobia and misinformation.</p>\n<p>Additionally, it ties into many other conspiracy theories, such as the origin of covid-19 or the new-world-order conspiracy.</p>"
 }
     
     
