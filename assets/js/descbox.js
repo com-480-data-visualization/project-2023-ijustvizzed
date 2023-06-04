@@ -3,7 +3,7 @@ export async function initdescbox(){
 
     var defaultdescp = "<p>Hover over or click a conspiracy theory to highlight it and show it's description. To unhighlight a theory click anywhere else.</p>"
 
-    descbox.innerHTML = "";
+    descbox.innerHTML = defaultdescp;
 
     var elements = document.querySelectorAll('.consp');
     
@@ -44,7 +44,7 @@ var consp_desc = {
         // Perform your desired actions here
         if(typeof consp_id === 'undefined'){
             window.fixed = false;
-            descbox.innerHTML = "";
+            descbox.innerHTML = defaultdescp;
             window.unhighlight_lineplot();
             window.unhighlight_chord();
             window.unclick_conspbox();
@@ -99,7 +99,7 @@ var consp_desc = {
     document.getElementById("checkbox_" + "infowars").checked = true
     document.getElementById("checkbox_" + "vice").checked = true
     var consp_id = 0;
-    descbox.innerHTML = consp_desc[consp_id];
+    descbox.innerHTML = defaultdescp;
             window.hover_chord(consp_id);
             window.hover_lineplot(consp_id);
             window.hover_conspbox(consp_id);
