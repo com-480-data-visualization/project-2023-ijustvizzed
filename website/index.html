@@ -72,7 +72,7 @@
 					<div id="consp_desc" class="col-9">
 						<style>
 							#descbox {
-								height: 40%;
+								height: 20%;
 							}
 							.myborder {
 								border: 1px solid #ccc;
@@ -89,8 +89,6 @@
 								background: #fff;
 							}
 						</style>
-						<div id="descbox" class="py-1">
-						</div>
 						<div id="scalethis" class="container">
 							<div class="row">
 								<div id="lineplot_publications"></div>
@@ -98,6 +96,8 @@
 							<div class="row myborder" >
 									<div id="source_selector"> </div>
 							</div>
+						</div>
+						<div id="descbox" class="py-1">
 						</div>
 					</div>
 				</div>
@@ -146,6 +146,7 @@ async function d3load() {
 				for (var i = 0; i < 100; i++) {
 					module.d3drawlineplot_publications(i);
 				}
+				
 
 				window.d3drawlineplot_publications = module.d3drawlineplot_publications;
 				})
@@ -200,6 +201,12 @@ async function d3load() {
 	color = d3.scaleOrdinal(data["labels"], d3.schemeCategory10)
 
 	await d3load();
+	for (var x in data['labels']) {
+            var type = data['labels'][x].join(" ");
+            document.getElementById("lineplotsvg_pub_"+type.replaceAll(" ", "_")).style.display = "none";
+        }
+        var type = data['labels'][0].join(" ");
+      document.getElementById("lineplotsvg_pub_"+type.replaceAll(" ", "_")).style.display = "block";
 })();
 
 

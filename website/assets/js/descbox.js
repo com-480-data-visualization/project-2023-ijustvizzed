@@ -39,6 +39,7 @@ var consp_desc = {
             window.unhighlight_lineplot();
             window.unhighlight_chord();
             window.unclick_conspbox();
+            // window.unshow_comp_lineplot();
         }
       };
 
@@ -65,6 +66,7 @@ var consp_desc = {
             window.unhighlight_lineplot();
             window.unhighlight_chord();
             window.unhighlight_conspbox();
+            // window.unshow_comp_lineplot(consp_id);
         }
     }
     function handleClick(event) {
@@ -74,6 +76,13 @@ var consp_desc = {
         window.hover_chord(consp_id);
         window.hover_lineplot(consp_id);
         window.click_conspbox(consp_id);
+        for (var x in data['labels']) {
+            var type = data['labels'][x].join(" ");
+            document.getElementById("lineplotsvg_pub_"+type.replaceAll(" ", "_")).style.display = "none";
+        }
+        var type = data['labels'][consp_id].join(" ");
+      document.getElementById("lineplotsvg_pub_"+type.replaceAll(" ", "_")).style.display = "block";
+        // window.show_comp_lineplot(consp_id);
     }
 }
 
